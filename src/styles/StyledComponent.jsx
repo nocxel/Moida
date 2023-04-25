@@ -1,5 +1,29 @@
 import { Form } from "react-router-dom";
 import styled, {css} from 'styled-components';
+import { createGlobalStyle} from "styled-components";
+
+// 전역스타일링: 모든 곳에 쓰이는 style입니다.
+const GlobalStyle = createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html { font-size: 62.5%; // 10px = 1rem;
+    --maincolor: rgb(107,78,254);
+  }  
+  body {
+    //font-family:
+  }
+  
+  h1 { // bigTitle 크기입니다.
+    font-size: 3.2rem;
+    font-weight: bolder;
+  }
+  h2 { // smallTitle 크기입니다.
+    font-size: 1.8rem;
+    font-weight: bolder;
+  }
+`;
+
 
 const BigTitle = styled.text`
     font-size: 32px;
@@ -46,3 +70,4 @@ const MyDiv = styled.div`
 `;
 
 export {BigTitle, SmaillTitle, Search, Button, BlockBox, Container, MyDiv};
+export default GlobalStyle;
