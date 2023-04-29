@@ -13,7 +13,6 @@ function Button({disabled, backgroundColor, padding, font, children}) {
 }
 
 const StyledButton = styled.button`
-  const maincolor = var(--maincolor);
   margin: 0;
   border: none;
   cursor: pointer;
