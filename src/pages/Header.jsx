@@ -1,21 +1,23 @@
 import styled from 'styled-components';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../Images/LOGO.png';
 import searchIcon from '../Images/search.png';
 import {Button} from '../styles/StyledComponent';
-import {useState} from 'react';
+import { useState } from 'react';
 import LogOut from '../Images/logout.png'
 import MyPerson from '../Images/user.png'
+import CustomNavLink from "./Common/CustomNavLink";
+import {LoginContext} from "../context/AuthContext";
 
 
 const Container = styled.div`
   padding-top: 10px;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 1200px;
   height: 90px;
   background-color: white;
-  border-bottom: 1.5px solid gray;
+  z-index: 90;
 
   .HeaderContainer, .HeaderLeft, .Nav, .HeaderRight {
     display: flex;
@@ -25,6 +27,7 @@ const Container = styled.div`
 
   .HeaderContainer {
     width: 1200px;
+    border-bottom: 1.5px solid gray;
     margin: 0 auto;
     justify-content: space-between;
   }
@@ -34,8 +37,8 @@ const Container = styled.div`
   }
 
   .Nav {
-    height: 30px;
-    padding: 5px; // 여기서 스터디, 스토리, 라운지 세로위치를 조정합니다.
+    height: 100%;
+    padding-top: 20px; // 여기서 스터디, 스토리, 라운지 세로위치를 조정합니다.
   }
 
   // 헤더 오른쪽 : 검색바, 로그인버튼, 마이페이지, 로그아웃 기능
@@ -92,18 +95,7 @@ const Logo = styled.img`
 `;
 
 // navDefault와 navSelect차이는 색상뿐입니다. 간단하게 고쳐쓰겠습니다.
-const CustomNavLink = styled(NavLink)`
-  color: black;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-decoration: none;
-  margin: 22px;
 
-  &.active { // 활성화되었을떄 색상을 바꿔줍니다. 크기도 바꿀까요? 이건 뭐 알아서
-    color: var(--maincolor);
-    font-size: 2rem;
-  }
-`;
 
 
 //  로그인 버튼 추가해야함 로그인담당하는 컨테이너 만들어야 해
@@ -127,8 +119,13 @@ const LoginButton = styled(Button)`
 
 
 const IsLogin = () => {
-    const [isLogin, setIsLogin] = useState(false);
+    const { isLogin } = LoginContext();
+    const { setIsLogin } = LoginContext();
 
+    function handleLogout() {
+        console.log({isLogin})
+        setIsLogin(false);
+    }
     const MypageImage = styled.div`
       width: 35px;
       height: 35px;
@@ -187,7 +184,6 @@ const IsLogin = () => {
       align-items: center;
       border: none;
       border-radius: 4px;
-
     `;
 
 
@@ -203,7 +199,7 @@ const IsLogin = () => {
                             <MyDiv>
                                 <DropDown><Link to="/Mypage" style={linkStyle}><MyImg
                                     src={MyPerson}/>마이페이지</Link></DropDown>
-                                <DropDown><Link to="/Logout" style={linkStyle}><MyImg src={LogOut}/>로그아웃</Link></DropDown>
+                                <DropDown><Link to="/" style={linkStyle} onClick={handleLogout}><MyImg src={LogOut}/>로그아웃</Link></DropDown>
                             </MyDiv>
                         )}
                 </MypageProfile>
@@ -212,26 +208,36 @@ const IsLogin = () => {
 }
 
 const Header = () => {
-    const [isLogin, setIsLogin] = useState(false);
+    const { isLogin } = LoginContext();
+    const { setIsLogin } = LoginContext();
+    const location =useLocation();
+
+    function handleLogout() {
+        console.log({isLogin})
+        setIsLogin(false);
+    }
     return (
         <Container>
             <div className='HeaderContainer'>
                 <div className='HeaderLeft'>
                     <NavLink to="/"><Logo src={logo} alt="로고"/></NavLink>
                     <div className='Nav'>
-                        <CustomNavLink to="/study">스터디</CustomNavLink>
-                        <CustomNavLink to="/story">스토리</CustomNavLink>
-                        <CustomNavLink to="/lounge/free">라운지</CustomNavLink>
+                        <CustomNavLink to="/study" deco={1}>스터디</CustomNavLink>
+                        <CustomNavLink to="/story" deco={1}>스토리</CustomNavLink>
+                        <CustomNavLink to="/lounge" deco={1}>라운지</CustomNavLink>
                     </div>
                 </div>
                 <div className='HeaderRight'>
                     <SearchBar>
                         <input className='searchInput' type="text" placeholder="검색하고 싶은 키워드를 입력해보세요!"/>
-                        <img src={searchIcon} alt="검색 아이콘"/>
+                        <NavLink to='/Lounge/SearchAll'><img src={searchIcon} alt="검색 아이콘"/></NavLink>
                     </SearchBar>
                     <div className='LoginArea' style={isLogin ? {width: '135px'} : {width: '130px'}}>
-                        {isLogin ? <IsLogin></IsLogin> :
-                        <LoginButton onClick={() => setIsLogin(true)}>로그인</LoginButton>}
+                        {isLogin ?
+                            <IsLogin></IsLogin>
+                            :
+                            <LoginButton onClick={() => setIsLogin(true)}>로그인</LoginButton>
+                        }
                     </div>
                 </div>
             </div>

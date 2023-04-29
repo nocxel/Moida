@@ -11,7 +11,7 @@ const StyledNavLink = styled(NavLink)`
   height: 100%;
   position: relative;
   top: 1px;
-  z-index: 100;
+  
   
   
   &.active { // 활성화되었을떄 색상을 바꿔줍니다. 크기도 바꿀까요? 이건 뭐 알아서
@@ -22,13 +22,14 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const CustomNavLink = ({ to, exact, children, size, deco }) => {
+const CustomNavLink = ({ to, exact, children, size, deco, isActive }) => {
     return (
         <StyledNavLink
             to={to}
             exact={exact}
             size={size}
             deco={deco}
+            isActive={isActive}
         >
             {children}
         </StyledNavLink>

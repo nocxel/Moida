@@ -16,7 +16,7 @@ import StoryMain from './pages/Story/StoryMain';
 import StoryPost from './pages/Story/StoryPost';
 import StoryWrite from './pages/Story/StoryWrite';
 
-import LoungeFreeMain from './pages/Lounge/LoungeFreeMain';
+import LoungeFree from './pages/Lounge/LoungeFree';
 import LoungeQnA from './pages/Lounge/LoungeQnA';
 import LoungePost from './pages/Lounge/LoungePost';
 import LoungeWrite from './pages/Lounge/LoungeWrite';
@@ -28,15 +28,19 @@ import SignUp from './pages/User/SignUp';
 
 import MemberDelete from './pages/User/MemberDelete'
 import StudyWrite from './pages/Study/Main/StudyCreate';
-import ContextProvider from './context/LoginContext';
+import {Provider} from "./context/AuthContext";
+
+import test from './pages/User/test';
 function App() {
     return (
         <>
+
+        <Provider>
             <GlobalStyle/>
             <Router>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-
+                    <Route path='/test' element={<test/>}/>
 
                     <Route path='/Study' element={<StudyMain/>}/>
                     <Route path='/Study/List' element={<StudyList/>}/>
@@ -51,7 +55,8 @@ function App() {
                     <Route path='/Story/Post' element={<StoryPost/>}/>
                     <Route path='/Story/Write' element={<StoryWrite/>}/>
 
-                    <Route path='/Lounge/Free' element={<LoungeFreeMain/>}/>
+                    <Route path='/Lounge' element={<LoungeFree/>}/>
+                    <Route path='/Lounge/Free' element={<LoungeFree/>}/>
                     <Route path='/Lounge/QnA' element={<LoungeQnA/>}/>
                     <Route path='/Lounge/Post' element={<LoungePost/>}/>
                     <Route path='/Lounge/Write' element={<LoungeWrite/>}/>
@@ -66,6 +71,7 @@ function App() {
                 </Routes>
             </Router>
 
+        </Provider>
         </>
     );
 };

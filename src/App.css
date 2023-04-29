@@ -2,5 +2,9 @@
 
 body{
   margin: 0 auto;
+  width: 1200px;
   font-family: 'Noto Sans KR', sans-serif;
 }
+
+/* app.js 에는 화면 레이아웃에 대한 css를 많이 넣습니다
+   */

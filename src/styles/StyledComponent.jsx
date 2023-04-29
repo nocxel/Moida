@@ -7,7 +7,8 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
-  html { font-size: 62.5%; // 10px = 1rem;
+  html {
+    font-size: 62.5%; // 10px = 1rem;
     --maincolor: rgb(107,78,254);
   }  
   body {
@@ -17,10 +18,12 @@ const GlobalStyle = createGlobalStyle`
   h1 { // bigTitle 크기입니다.
     font-size: 3.2rem;
     font-weight: bolder;
+    margin: 0;
   }
   h2 { // smallTitle 크기입니다.
     font-size: 1.8rem;
     font-weight: bolder;
+    margin: 0;
   }
 `;
 
