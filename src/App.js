@@ -30,7 +30,6 @@ import MemberDelete from './pages/User/MemberDelete'
 import StudyWrite from './pages/Study/Main/StudyCreate';
 import {Provider} from "./context/AuthContext";
 
-import test from './pages/User/test';
 function App() {
     return (
         <>
