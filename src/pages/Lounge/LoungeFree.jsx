@@ -142,6 +142,7 @@ const LoungeFreeMain = () => {
                     title="이것은 제목입니다"
                     content="내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"
                     date="2023/04/11"
+                    isNim={1}
                     recommend={3}
                 ></Board>
                 <Board
@@ -193,7 +194,7 @@ const LoungeFreeMain = () => {
                     title="이것은 제목입니다"
                     content="내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"
                     date="2023/04/11"
-                    recommend={3}
+                    recommend={1003}
                 ></Board>
             </div>
 

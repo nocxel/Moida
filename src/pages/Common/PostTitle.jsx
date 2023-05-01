@@ -3,6 +3,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 
+
 // 사용법
 // import PostTitle from .. import 하고
 // <PostTitle
@@ -83,14 +84,12 @@ const StyledPostTitle = styled.div`
     
     .recommend {
       display: flex;
-      text-align: center;
       padding: 10px;
     }
     
     h1 {
       font-size: var(--thumbsup);
-      align-items: center;
-      align-content: center;
+      text-align: center;
       padding-top: 14px;
     }
     
@@ -124,7 +123,6 @@ export const PostTitle = ({size, img_url, nickname, title, date, recommend}) => 
                 </div>
                 <div className="date">{date}</div>
             </div>
-
         </StyledPostTitle>
 
     )

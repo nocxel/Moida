@@ -3,6 +3,7 @@ import Header from "../Header";
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import {PostTitle} from "../Common/PostTitle";
+import CommentsList from "../Common/CommentsList";
 
 const Container = styled.div`
   width: 1200px;
@@ -41,10 +42,23 @@ const Container = styled.div`
   }
   
   .content {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     min-height: 750px;
     border-bottom: 1px solid gray;
     padding: 80px 250px 80px 250px;
+  }
+  
+  .comment {
+    width: 100%;
+    
+    .comment-header {
+      padding-left: 50px;
+      display: flex;
+      align-items: center;
+      height: 100px;
+      font-size: 3.2rem;
+      font-weight: bold;
+    }
   }
 `;
 
@@ -87,12 +101,11 @@ const LoungePost = ({title, nickname, recommend, date, content}) => {
                 dsa
                 dsadasdadadsadsadadadasd</p></div>
             <div className="comment">
-                <div className="comment-header">댓글</div>
-                <div className="comment-list">
-                {/*    Comment 컴포넌트를 사용할 예정이다*/}
-                </div>
-                <div className='comment-input'></div>
+                <div className="comment-header">댓글 📑</div>
+                <CommentsList></CommentsList>
             </div>
+
+
 
 
 
