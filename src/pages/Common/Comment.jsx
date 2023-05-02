@@ -79,7 +79,7 @@ const StyledComment = styled.div`
 
 // 내 아이디 값을 가져와서 수정/삭제가 가능해야함 댓글 삭제하면 대댓글은 어떻게 처리하냐?? 전부 삭제 처리하나?
 // 닉네임은 변경가능한 값이다, 고유 아이디값과 비교하는 것이 맞다
-// isChild = parrent 컬럼에 값이 있으면 true 아니면 null 이니까 false로 쓸 수 있지
+// isChild = parent 컬럼에 값이 있으면 true 아니면 null 이니까 false로 쓸 수 있지
 const Comment = ({ userId, isModify, nickname, img_url, content, time, isChild }) => {
     const [type, setType] = useState(); // 댓글 수정을 위함 나중에 추가
     return (

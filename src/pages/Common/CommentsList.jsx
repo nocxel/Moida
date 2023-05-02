@@ -23,6 +23,12 @@ const Container = styled.div`
         height: 125px;
         width: 760px;
         border-radius: 10px;
+        border: 0;
+        
+        &:focus {
+          outline-color: lightgray;
+          outline-width: 2px;
+        }
       }
       Button {
         margin-left: 20px;
@@ -31,6 +37,8 @@ const Container = styled.div`
       }
     }
 `;
+// onClick DB  COMMENTS 테이블에 INSERT 해주는 거 만들어야함
+// 아이디를 컨텍스트 API로 받아와야 할듯? 그럼 COMMENTS 테이블을 ID로 바꿔야 할 것같은데 흠...
 
 
 const CommentsList = () => {
