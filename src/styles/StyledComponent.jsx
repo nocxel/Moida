@@ -1,3 +1,4 @@
+import { Form } from "react-router-dom";
 import styled, {css} from 'styled-components';
 import { createGlobalStyle} from "styled-components";
 
@@ -17,12 +18,10 @@ const GlobalStyle = createGlobalStyle`
   h1 { // bigTitle 크기입니다.
     font-size: 3.2rem;
     font-weight: bolder;
-    margin: 0;
   }
   h2 { // smallTitle 크기입니다.
     font-size: 1.8rem;
     font-weight: bolder;
-    margin: 0;
   }
 `;
 
@@ -71,5 +70,43 @@ const MyDiv = styled.div`
     background-color: red;
 `;
 
-export {BigTitle, SmaillTitle, Search, Button, BlockBox, Container, MyDiv};
+const StudyRom = styled.div`
+    padding-top: 150px;
+    padding-left: 250px;
+    width: 900px;
+    z-index:-10;
+    word-wrap: break-word;
+`;
+
+const Profile = styled.div`
+    background-color:#E2fffe;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+`;
+
+const BoardBox = styled.div`
+    background-color: #f3f3f3;
+    width: 1000px;
+    height: 100%;
+    padding-bottom: 100px;
+    position: relative;
+    left: -50px;
+    margin-top: 50px;
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
+
+`;
+
+const BoardContainerWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+`;
+
+
+
+export {BigTitle, SmaillTitle, Search, Button, BlockBox, Container, MyDiv, StudyRom, Profile, BoardBox, BoardContainerWrapper};
 export default GlobalStyle;

@@ -224,7 +224,7 @@ const Header = () => {
                     <div className='Nav'>
                         <CustomNavLink to="/study" deco={1}>스터디</CustomNavLink>
                         <CustomNavLink to="/story" deco={1}>스토리</CustomNavLink>
-                        <CustomNavLink to="/lounge" deco={1}>라운지</CustomNavLink>
+                        <CustomNavLink to="/lounge/free" deco={1}>라운지</CustomNavLink>
                     </div>
                 </div>
                 <div className='HeaderRight'>
