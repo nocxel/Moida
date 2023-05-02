@@ -103,7 +103,7 @@ const LoungeFreeMain = () => {
 
     return (
         <Container>
-            <Header></Header>
+            <Header />
             <div className='lounge-nav'>
                 <div className='nav'>
                     <div className='board-select'>

@@ -17,7 +17,7 @@ const InfoText = styled.p`
   margin-bottom: 4px;
 `;
 
- const Profile = ({showMyImgInPut,myImg, LOGO_imgOnly}) => {
+export const Profile = ({showMyImgInPut,myImg, LOGO_imgOnly}) => {
 
     return (
         <>
@@ -34,4 +34,3 @@ const InfoText = styled.p`
         </>
     );    
 };
-export default Profile;
