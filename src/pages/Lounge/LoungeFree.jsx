@@ -4,6 +4,7 @@ import Header from "../Header";
 import styled from "styled-components";
 import Button from "../Common/Button";
 import {Board} from "../Common/Board";
+import HeaderLounge from "../HeaderLounge";
 
 export const Container = styled.div`
   width: 1200px;
@@ -14,31 +15,6 @@ export const Container = styled.div`
   .lounge-nav {
     width: 100%;
     margin: 0 auto;
-
-    .nav {
-      background-color: rgb(241, 241, 241);
-      display: flex;
-      justify-content: center;
-      height: 60px;
-      align-items: center;
-    }
-
-    .board-select {
-      width: 35%;
-      display: flex;
-    }
-
-    .board-select-type {
-      color: black;
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin: 23px 22px 22px 22px;
-      text-decoration: none;
-      height: 100%;
-      position: relative;
-      top: 1px;
-      cursor: pointer;
-    }
   }
 
   .board-top {
@@ -88,7 +64,7 @@ export const Container = styled.div`
     }
   }
 
- 
+
   .board-bottom {
     background-color: rgb(241, 241, 241);
     width: 100%;
@@ -103,16 +79,10 @@ const LoungeFreeMain = () => {
 
     return (
         <Container>
-            <Header />
-            <div className='lounge-nav'>
-                <div className='nav'>
-                    <div className='board-select'>
-                        <NavLink to="/lounge/free" className='board-select-type'
-                                 style={{color: 'var(--maincolor)'}}>자유</NavLink>
-                        <NavLink to="/lounge/qna" className='board-select-type'>고민</NavLink>
-                    </div>
-                </div>
-            </div>
+            <Header/>
+
+            <HeaderLounge></HeaderLounge>
+
 
             <div className='board-top'>
                 <div className='board-title'>

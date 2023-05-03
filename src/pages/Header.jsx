@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import {Link, NavLink, useLocation } from 'react-router-dom';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 import logo from '../Images/LOGO.png';
 import searchIcon from '../Images/search.png';
 import {Button} from '../styles/StyledComponent';
-import { useState } from 'react';
+import {useState} from 'react';
 import LogOut from '../Images/logout.png'
 import MyPerson from '../Images/user.png'
 import CustomNavLink from "./Common/CustomNavLink";
@@ -47,6 +47,7 @@ const Container = styled.div`
     justify-content: space-between;
     padding-top: 18px;
   }
+
   .LoginArea {
     width: 100px;
     margin-left: 20px;
@@ -97,7 +98,6 @@ const Logo = styled.img`
 // navDefault와 navSelect차이는 색상뿐입니다. 간단하게 고쳐쓰겠습니다.
 
 
-
 //  로그인 버튼 추가해야함 로그인담당하는 컨테이너 만들어야 해
 
 
@@ -117,15 +117,15 @@ const LoginButton = styled(Button)`
 `;
 
 
-
 const IsLogin = () => {
-    const { isLogin } = LoginContext();
-    const { setIsLogin } = LoginContext();
+    const {isLogin} = LoginContext();
+    const {setIsLogin} = LoginContext();
 
     function handleLogout() {
         console.log({isLogin})
         setIsLogin(false);
     }
+
     const MypageImage = styled.div`
       width: 35px;
       height: 35px;
@@ -191,31 +191,33 @@ const IsLogin = () => {
     const [view, setView] = useState(false);
 
     return (
-            <>
-                <MypageImage/>
-                <MypageProfile onClick={() => { setView(!view)
-                    }}>윤홍비 님{" "}
-                        {view && (
-                            <MyDiv>
-                                <DropDown><Link to="/Mypage" style={linkStyle}><MyImg
-                                    src={MyPerson}/>마이페이지</Link></DropDown>
-                                <DropDown><Link to="/" style={linkStyle} onClick={handleLogout}><MyImg src={LogOut}/>로그아웃</Link></DropDown>
-                            </MyDiv>
-                        )}
-                </MypageProfile>
-            </>
+        <>
+            <MypageImage/>
+            <MypageProfile onClick={() => {
+                setView(!view)
+            }}>윤홍비 님{" "}
+                {view && (
+                    <MyDiv>
+                        <DropDown><Link to="/Mypage" style={linkStyle}><MyImg
+                            src={MyPerson}/>마이페이지</Link></DropDown>
+                        <DropDown><Link to="/" style={linkStyle} onClick={handleLogout}><MyImg src={LogOut}/>로그아웃</Link></DropDown>
+                    </MyDiv>
+                )}
+            </MypageProfile>
+        </>
     )
 }
 
 const Header = () => {
-    const { isLogin } = LoginContext();
-    const { setIsLogin } = LoginContext();
-    const location =useLocation();
+    const {isLogin} = LoginContext();
+    const {setIsLogin} = LoginContext();
+    const location = useLocation();
 
     function handleLogout() {
         console.log({isLogin})
         setIsLogin(false);
     }
+
     return (
         <Container>
             <div className='HeaderContainer'>
@@ -224,7 +226,7 @@ const Header = () => {
                     <div className='Nav'>
                         <CustomNavLink to="/study" deco={1}>스터디</CustomNavLink>
                         <CustomNavLink to="/story" deco={1}>스토리</CustomNavLink>
-                        <CustomNavLink to="/lounge/free" deco={1}>라운지</CustomNavLink>
+                        <CustomNavLink to="/lounge" deco={1}>라운지</CustomNavLink>
                     </div>
                 </div>
                 <div className='HeaderRight'>

@@ -85,6 +85,7 @@ const StyledPostTitle = styled.div`
     .recommend {
       display: flex;
       padding: 10px;
+      align-items: center;
     }
     
     h1 {
