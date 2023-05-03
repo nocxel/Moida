@@ -224,9 +224,9 @@ const Header = () => {
                 <div className='HeaderLeft'>
                     <NavLink to="/"><Logo src={logo} alt="로고"/></NavLink>
                     <div className='Nav'>
-                        <CustomNavLink to="/study" deco={1}>스터디</CustomNavLink>
-                        <CustomNavLink to="/story" deco={1}>스토리</CustomNavLink>
-                        <CustomNavLink to="/lounge" deco={1}>라운지</CustomNavLink>
+                        <CustomNavLink to="/study" contain="/study" deco={1}>스터디</CustomNavLink>
+                        <CustomNavLink to="/story" contain="/story" deco={1}>스토리</CustomNavLink>
+                        <CustomNavLink to="/lounge/free" contain="/lounge" deco={1}>라운지</CustomNavLink>
                     </div>
                 </div>
                 <div className='HeaderRight'>

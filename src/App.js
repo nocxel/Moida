@@ -55,7 +55,7 @@ function App() {
                     <Route path='/Story/Post' element={<StoryPost/>}/>
                     <Route path='/Story/Write' element={<StoryWrite/>}/>
 
-                    <Route path='/Lounge' element={<LoungeFree/>} />
+
                     <Route path='/Lounge/Free' element={<LoungeFree/>}/>
                     <Route path='/Lounge/QnA' element={<LoungeQnA/>}/>
                     <Route path='/Lounge/Post' element={<LoungePost/>}/>

@@ -2,37 +2,48 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 
-const StyledNavLink = styled(NavLink)`
-  color: black;
-  font-size: ${props => props.size ? props.size + 'rem' : '1.8rem'};
-  font-weight: bold;
-  margin: 23px 22px 22px 22px;
-  text-decoration: none;
+
+
+const Container = styled.div`
   height: 100%;
-  position: relative;
-  top: 1px;
   
-  
-  
-  &.active { // 활성화되었을떄 색상을 바꿔줍니다. 크기도 바꿀까요? 이건 뭐 알아서
-    color: var(--maincolor);
-    font-size: ${props => props.size ? props.size + 0.2 + 'rem' : '2rem'};
-    border-color: var(--maincolor);
-    border-bottom: ${props => props.deco ? '3px solid' : 'none'};
+  a {
+    display: block;
+    color: black;
+    font-size: ${props => props.size ? props.size + 'rem' : '1.8rem'};
+    font-weight: bold;
+    margin: 0 22px 0 22px;
+    text-decoration: none;
+    height: 100%;
+    position: relative;
+    top: 1px;
   }
+  .active-nav {
+     color: var(--maincolor);
+     font-size: ${props => props.size ? props.size + 0.2 + 'rem' : '2rem'};
+     border-bottom: 3px solid var(--maincolor);
+     border-bottom: ${props => props.deco && "3px solid var(--maincolor)"};
+
+    
+  }
+  
+  
+  
 `;
 
-const CustomNavLink = ({ to, exact, children, size, deco, isActive }) => {
+const CustomNavLink = ({ to, exact, contain, children, size, deco }) => {
+    const location = window.location.pathname;
+
     return (
-        <StyledNavLink
-            to={to}
-            exact={exact}
-            size={size}
-            deco={deco}
-            isActive={isActive}
-        >
-            {children}
-        </StyledNavLink>
+        <Container>
+            <NavLink className={window.location.pathname.includes(contain) ? "active-nav" : "non-active-nav"}
+                     to={to}
+                     deco={deco}
+            >{children}</NavLink>
+
+        </Container>
+
+
     );
 };
 

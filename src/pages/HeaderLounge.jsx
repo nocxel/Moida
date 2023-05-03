@@ -16,7 +16,7 @@ const Container = styled.div`
     width: 35%;
     display: flex;
 
-    * {
+    a {
       color: black;
       font-size: 1.8rem;
       font-weight: bold;
@@ -56,10 +56,10 @@ const HeaderLounge = () => {
     return (
         <Container>
             <div className='board-select'>
-                <NavLink to="/lounge/free" className={activeLink === "lounge/free" || location === "/lounge" ? "active" : "inactive"}
+                <NavLink to="/lounge/free" className={activeLink === "lounge/free" ? "active" : "inactive"}
                          onClick={() => handleButtonClick("lounge/free")}
                 >자유</NavLink>
-                <NavLink to="/lounge/qna" className={activeLink === "lounge/qna" && location !== "/lounge" ? "active" : "inactive"}
+                <NavLink to="/lounge/qna" className={location !=="/lounge/free" && activeLink === "lounge/qna" ? "active" : "inactive"}
                          onClick={() => handleButtonClick("lounge/qna")}
                 >고민</NavLink>
             </div>
