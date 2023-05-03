@@ -11,30 +11,13 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   top: 90px;
-
-  .lounge-nav {
-    width: 100%;
-    margin: 0 auto;
-  }
+  
 
   .content {
     font-size: 1.6rem;
     min-height: 750px;
     border-bottom: 1px solid gray;
     padding: 80px 250px 80px 250px;
-  }
-
-  .comment {
-    width: 100%;
-
-    .comment-header {
-      padding-left: 50px;
-      display: flex;
-      align-items: center;
-      height: 100px;
-      font-size: 3.2rem;
-      font-weight: bold;
-    }
   }
 `;
 
@@ -68,10 +51,8 @@ const LoungePost = ({title, nickname, recommend, date, content}) => {
                 sa
                 dsa
                 dsadasdadadsadsadadadasd</p></div>
-            <div className="comment">
-                <div className="comment-header">댓글 📑</div>
+
                 <CommentsList></CommentsList>
-            </div>
 
 
         </Container>

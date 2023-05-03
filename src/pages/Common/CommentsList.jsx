@@ -1,16 +1,28 @@
 import Comment from "./Comment";
 import styled from "styled-components";
 import Button from "./Button";
+import React from "react";
 
 const Container = styled.div`
     width: 1200px;
-    background-color: whitesmoke;
+    
+    .comment-header {
+      background-color: white;
+      padding-left: 50px;
+      display: flex;
+      align-items: center;
+      height: 100px;
+      font-size: 3.2rem;
+      font-weight: bold;
+    }
+  .comment-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: whitesmoke;
     margin: 10px auto;
     padding-top: 30px;
-
+  }
     .comment-write {
       height: 215px;
       width: 880px;
@@ -45,6 +57,8 @@ const CommentsList = () => {
 
     return (
         <Container>
+            <div className="comment-header">댓글 📑</div>
+            <div className="comment-list">
             <Comment 
                 isChild={null}
                 nickname={"윤홍비"}
@@ -81,6 +95,7 @@ const CommentsList = () => {
                 <Button>확인</Button>
 
 
+            </div>
             </div>
         </Container>
 
