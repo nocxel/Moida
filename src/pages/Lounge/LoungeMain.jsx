@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
+import AxiosAPI from "../../api/AxiosAPI";
 import Header from "../Header";
-import styled from "styled-components";
+import HeaderLounge from "../HeaderLounge";
 import Button from "../Common/Button";
 import {Board} from "../Common/Board";
-import HeaderLounge from "../HeaderLounge";
-import AxiosAPI from "../../api/AxiosAPI";
+import styled from "styled-components";
 
-export const Container = styled.div`
+
+const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -72,23 +73,23 @@ export const Container = styled.div`
     height: auto;
     padding: 10px 45px 10px 45px;
   }
-
-
-
 `;
-const LoungeFreeMain = () => {
+
+const LoungeMain = () => {
     const [postList, setPostList] = useState(null);
+    const {boardName} = useParams();
+
     useEffect(() => {
         const getPostList = async() => {
-            const rsp = await AxiosAPI.postListGet('free');
+            const rsp = await AxiosAPI.postListGet(boardName);
             setPostList(rsp.data)
             console.log(rsp.data);
         };
         getPostList();
-    }, []);
+    }, [boardName]);
+
 
     return (
-
         <Container>
             <Header/>
 
@@ -97,7 +98,7 @@ const LoungeFreeMain = () => {
 
             <div className='board-top'>
                 <div className='board-title'>
-                    <h1>자유 게시판</h1>
+                    <h1>{boardName} 게시판</h1>
                     <NavLink to='/lounge/write'><Button font={1.5}>글쓰기</Button></NavLink>
                 </div>
                 <div className='board-list'>
@@ -117,23 +118,22 @@ const LoungeFreeMain = () => {
 
             <div className='board-bottom'>
                 {postList && postList.map(post => (
-                        <Board
-                                    postId={post.postId}
-                                    type='lounge'
-                                    nickname={post.nickname}
-                                    title={post.title}
-                                    content={post.contents}
-                                    date={post.date}
-                                    isNim={1}
-                                    recommend={post.recommend}
-                                ></Board>
-                    ))}
+                    <Board
+                        postId={post.postId}
+                        type='lounge'
+                        nickname={post.nickname}
+                        title={post.title}
+                        content={post.contents}
+                        date={post.date}
+                        isNim={1}
+                        recommend={post.recommend}
+                    ></Board>
+                ))}
             </div>
 
 
         </Container>
-    );
-};
+    )
+}
 
-
-export default LoungeFreeMain;
+export default LoungeMain;

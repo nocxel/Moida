@@ -95,6 +95,7 @@ const StyledBoard = styled.div`
           margin-left: 10px;
           padding: 0;
         }
+        
       }
     }
     
@@ -107,17 +108,16 @@ const StyledBoard = styled.div`
         width: 120px;
         height: 90px;
       }
-  }
-  
-  
+      
+    }
   }
 
 
 `;
-export const Board = ({ post_id, type, nickname, title, content, img_url, date, recommend }) => {
+export const Board = ({ postId, type, nickname, title, content, img_url, date, recommend }) => {
     const navigate = useNavigate();
     const OnClick = () => {
-        navigate(`/${type}/${post_id}`)
+        navigate(`/lounge/post/${postId}`)
     }
 
     return (

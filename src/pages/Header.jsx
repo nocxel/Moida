@@ -3,7 +3,7 @@ import {Link, NavLink, useLocation} from 'react-router-dom';
 import logo from '../Images/LOGO.png';
 import searchIcon from '../Images/search.png';
 import {Button} from '../styles/StyledComponent';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import LogOut from '../Images/logout.png'
 import MyPerson from '../Images/user.png'
 import CustomNavLink from "./Common/CustomNavLink";
@@ -211,7 +211,6 @@ const IsLogin = () => {
 const Header = () => {
     const {isLogin} = LoginContext();
     const {setIsLogin} = LoginContext();
-    const location = useLocation();
 
     function handleLogout() {
         console.log({isLogin})

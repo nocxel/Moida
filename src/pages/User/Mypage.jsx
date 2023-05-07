@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import axios from "axios";
 import HeaderMyPage from "../HeaderMyPage";
@@ -91,7 +91,7 @@ const Round = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  
+
   background-color: ${props => props.color};
 `;/*background-color: ${(props) => getRandomColor()};*/
 const StudyName = styled.div`
@@ -203,9 +203,6 @@ const FileSelection = styled.input`
 `;
 
 
-
-
-
 // 랜덤한 색상 생성 함수 : 색 안 겹치게 하려면 랜덤 컬러 다 썼을 경우 반환 색 고려해야해서 우선 제외
 // 아니면 차라리 순서대로 색상 입힐까 싶기도...
 /*const getRandomColor = () => {
@@ -215,137 +212,136 @@ const FileSelection = styled.input`
 };*/
 
 
-
-
 const Mypage = () => {
 
-  const [studyInfo, setStudyInfo] = useState([]);
-  const [isNotAttach, setIsNotAttach] = useState(false)
-  const [myImg, setMyImg] = useState(null);
+    const [studyInfo, setStudyInfo] = useState([]);
+    const [isNotAttach, setIsNotAttach] = useState(false)
+    const [myImg, setMyImg] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get("/study")
-      .then((response) => {
-        setStudyInfo(response.data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch study list:", error);
-      });
-  }, []);
+    useEffect(() => {
+        axios
+            .get("/study")
+            .then((response) => {
+                setStudyInfo(response.data);
+            })
+            .catch((error) => {
+                console.error("Failed to fetch study list:", error);
+            });
+    }, []);
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [myInfo, setMyInfo] = useState('자기 소개를 입력하세요.');
+    const [isEditing, setIsEditing] = useState(false);
+    const [myInfo, setMyInfo] = useState('자기 소개를 입력하세요.');
 
-  // 수정하기
-  const handleMyInfoChange = (e) => {
-    setMyInfo(e.target.value);
-  };
+    // 수정하기
+    const handleMyInfoChange = (e) => {
+        setMyInfo(e.target.value);
+    };
 
-  const handleEditmyInfo = () => {
-    setIsEditing(true);
-    setIsNotAttach(true);
-  };
+    const handleEditmyInfo = () => {
+        setIsEditing(true);
+        setIsNotAttach(true);
+    };
 
-  const handleSaveMyInfo = () => {
-    setIsEditing(false);
-    alert('저장되었습니다: ' + myInfo);
-    setIsNotAttach(false);
-  };
+    const handleSaveMyInfo = () => {
+        setIsEditing(false);
+        alert('저장되었습니다: ' + myInfo);
+        setIsNotAttach(false);
+    };
 
-  const handleMyImgChange = (event) => {
-    const myImg = event.target.files[0];
-    if (myImg) {
-      setMyImg(myImg); // 선택된 파일 정보를 상태로 저장
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setShowMyImgInPut(reader.result);
-      };
-      reader.readAsDataURL(myImg);
-    } else {
-      setShowMyImgInPut(null);
-      setMyImg(null); // 파일이 선택되지 않은 경우 상태 초기화
-    }
-  };
+    const handleMyImgChange = (event) => {
+        const myImg = event.target.files[0];
+        if (myImg) {
+            setMyImg(myImg); // 선택된 파일 정보를 상태로 저장
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setShowMyImgInPut(reader.result);
+            };
+            reader.readAsDataURL(myImg);
+        } else {
+            setShowMyImgInPut(null);
+            setMyImg(null); // 파일이 선택되지 않은 경우 상태 초기화
+        }
+    };
 
-  // 이미지 초기화 핸들러
-  const handleReset = () => {
-    setShowMyImgInPut(null);
-    setMyImg(null);
-  };
+    // 이미지 초기화 핸들러
+    const handleReset = () => {
+        setShowMyImgInPut(null);
+        setMyImg(null);
+    };
 
-  const [showMyImgInPut, setShowMyImgInPut] = useState(null);
+    const [showMyImgInPut, setShowMyImgInPut] = useState(null);
 
-  return (
-    <Container>
-      <Header/>
-        <HeaderMyPage />
-        <MyPageContainer>
-          <Ex>
-
-
-          <Title>내 정보</Title>
-        <InfoContainer>
-
-          <Profile>
-          {showMyImgInPut ? (
-            <MyImage src={showMyImgInPut} alt="이미지 미리보기" />
-          ) : (
-            myImg ? ( // 선택된 파일이 있으면 파일 미리보기
-              <MyImage src={URL.createObjectURL(myImg)} alt="이미지 미리보기" />
-            ) : ( // 선택된 파일이 없으면 기본 이미지 보여주기
-              <MyImage src={LOGO_imgOnly} alt="기본 이미지"/>
-            )
-          )}
-          <InfoText>님</InfoText>
+    return (
+        <Container>
+            <Header/>
+            <HeaderMyPage/>
+            <MyPageContainer>
+                <Ex>
 
 
-          {isEditing ? (
-            <>
-            </>
-          ) : (
-              <MyInfoButton onClick={handleEditmyInfo}>수정하기</MyInfoButton>
-          )}
-          </Profile>
+                    <Title>내 정보</Title>
+                    <InfoContainer>
+
+                        <Profile>
+                            {showMyImgInPut ? (
+                                <MyImage src={showMyImgInPut} alt="이미지 미리보기"/>
+                            ) : (
+                                myImg ? ( // 선택된 파일이 있으면 파일 미리보기
+                                    <MyImage src={URL.createObjectURL(myImg)} alt="이미지 미리보기"/>
+                                ) : ( // 선택된 파일이 없으면 기본 이미지 보여주기
+                                    <MyImage src={LOGO_imgOnly} alt="기본 이미지"/>
+                                )
+                            )}
+                            <InfoText>님</InfoText>
 
 
-          {isNotAttach && <FileSelection type="file" onChange={handleMyImgChange} /> }
-          {isNotAttach && <ResetButton onClick={handleReset}>기본 이미지</ResetButton>}
-          <InfoText>이름 </InfoText>
-          <InfoText>이메일 </InfoText>
-          <InfoText>자기소개 </InfoText>
-          {isEditing ? (
-            <MyInfoTextChangeBox>
-            <MyInfoTextarea value={myInfo} onChange={handleMyInfoChange}/>
-            <MyInfoButton onClick={handleSaveMyInfo}>저장</MyInfoButton>
-            </MyInfoTextChangeBox>
-          ) : (
-              <MyInfo>{myInfo}</MyInfo>
-          )}
-        </InfoContainer>
-        <br />
-
-        {/* 내 스터디 */}
-        <Title>내 스터디</Title>
-        <StudyContainer>
-        {studyInfo.map(study => (
-          <StudyItemContainer key={study.id}>
-            <Line1><Line1In><Round>코</Round> <StudyName>스터디 1</StudyName></Line1In> <People>회원수/모집인원</People> </Line1>
-              <p>스터디 소개</p>
-              <Tags>#태그들</Tags>
-          </StudyItemContainer>
-        ))}
-            <StudyItemContainer>스터디 3</StudyItemContainer>
-        </StudyContainer>
+                            {isEditing ? (
+                                <>
+                                </>
+                            ) : (
+                                <MyInfoButton onClick={handleEditmyInfo}>수정하기</MyInfoButton>
+                            )}
+                        </Profile>
 
 
-          </Ex>
+                        {isNotAttach && <FileSelection type="file" onChange={handleMyImgChange}/>}
+                        {isNotAttach && <ResetButton onClick={handleReset}>기본 이미지</ResetButton>}
+                        <InfoText>이름 </InfoText>
+                        <InfoText>이메일 </InfoText>
+                        <InfoText>자기소개 </InfoText>
+                        {isEditing ? (
+                            <MyInfoTextChangeBox>
+                                <MyInfoTextarea value={myInfo} onChange={handleMyInfoChange}/>
+                                <MyInfoButton onClick={handleSaveMyInfo}>저장</MyInfoButton>
+                            </MyInfoTextChangeBox>
+                        ) : (
+                            <MyInfo>{myInfo}</MyInfo>
+                        )}
+                    </InfoContainer>
+                    <br/>
 
-    </MyPageContainer>
-    </Container>
+                    {/* 내 스터디 */}
+                    <Title>내 스터디</Title>
+                    <StudyContainer>
+                        {studyInfo.map(study => (
+                            <StudyItemContainer key={study.id}>
+                                <Line1><Line1In><Round>코</Round> <StudyName>스터디 1</StudyName></Line1In>
+                                    <People>회원수/모집인원</People> </Line1>
+                                <p>스터디 소개</p>
+                                <Tags>#태그들</Tags>
+                            </StudyItemContainer>
+                        ))}
+                        <StudyItemContainer>스터디 3</StudyItemContainer>
+                    </StudyContainer>
 
 
-  );
+                </Ex>
+
+            </MyPageContainer>
+        </Container>
+
+
+    );
 };
 
 export default Mypage;

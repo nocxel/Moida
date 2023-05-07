@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../Header";
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
 import {PostTitle} from "../Common/PostTitle";
 import CommentsList from "../Common/CommentsList";
 import HeaderLounge from "../HeaderLounge";
+import {useParams} from "react-router-dom";
+import AxiosAPI from "../../api/AxiosAPI";
 
 const Container = styled.div`
   width: 1200px;
@@ -28,31 +29,39 @@ const Container = styled.div`
 // 네비바가 컴포넌트로 구현하지 못해 하쉽다. 근데 구현할 수가 없는걸.... 로직이 복잡해져 어려워 질 것 같다.
 
 const LoungePost = ({title, nickname, recommend, date, content}) => {
+    const {postId} = useParams();
+    const [post ,setPost] = useState(null);
+
+    useEffect(() => {
+        const viewPost = async() => {
+            try {
+                const rsp = await AxiosAPI.postViewGet(postId);
+                setPost(rsp.data);
+                console.log(rsp.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        viewPost();
+    }, [postId]);
+
     return (
+
         <Container>
             <Header/>
             <HeaderLounge/>
 
-            <PostTitle
+            {post && <PostTitle
                 size="l"
-                title="요즘 개발하는게 너무 재미따히히"
-                nickname="닉네임"
-                recommend={-500}
-                date={"2023/04/11"}
-            ></PostTitle>
-            <div className="content"><p>asdsadadsadsadadasdadadas
-                adasdsadsad<br/><br/><br/>sadsadadsadsadsadsa<br/>
-                sadasd
-                sad
-                sadsadsa
-                dsadsa
-                dsadsad
-                sad
-                sa
-                dsa
-                dsadasdadadsadsadadadasd</p></div>
-
-                <CommentsList></CommentsList>
+                title={post.title}
+                nickname={post.nickname}
+                recommend={post.recommend}
+                date={post.regTime}
+            />}
+            <div className="content">
+            {post && post.contents}
+            </div>
+            <CommentsList></CommentsList>
 
 
         </Container>

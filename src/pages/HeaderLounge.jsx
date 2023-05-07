@@ -56,7 +56,7 @@ const HeaderLounge = () => {
     return (
         <Container>
             <div className='board-select'>
-                <NavLink to="/lounge/free" className={activeLink === "lounge/free" ? "active" : "inactive"}
+                <NavLink to="/lounge/free" className={location !== "/lounge/qna" && activeLink === "lounge/free" ? "active" : "inactive"}
                          onClick={() => handleButtonClick("lounge/free")}
                 >자유</NavLink>
                 <NavLink to="/lounge/qna" className={location !=="/lounge/free" && activeLink === "lounge/qna" ? "active" : "inactive"}

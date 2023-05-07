@@ -31,6 +31,7 @@ import FindMember from './pages/User/FindMember';
 import MemberDelete from './pages/User/MemberDelete'
 import StudyWrite from './pages/Study/Main/StudyCreate';
 import {Provider} from "./context/AuthContext";
+import LoungeMain from "./pages/Lounge/LoungeMain";
 function App() {
     return (
         <>
@@ -55,10 +56,8 @@ function App() {
                     <Route path='/Story/Post' element={<StoryPost/>}/>
                     <Route path='/Story/Write' element={<StoryWrite/>}/>
 
-
-                    <Route path='/Lounge/Free' element={<LoungeFree/>}/>
-                    <Route path='/Lounge/QnA' element={<LoungeQnA/>}/>
-                    <Route path='/Lounge/Post' element={<LoungePost/>}/>
+                    <Route path='/Lounge/:boardName' element={<LoungeMain/>}/>
+                    <Route path='/Lounge/Post/:postId' element={<LoungePost/>}/>
                     <Route path='/Lounge/Write' element={<LoungeWrite/>}/>
                     <Route path='/Lounge/SearchAll' element={<SearchAll/>}/>
 
