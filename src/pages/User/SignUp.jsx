@@ -7,7 +7,7 @@ const SignContainer = styled.div`
   width: 800px;
   text-align: left;
   margin: 20px auto;
-  padding: 25px 0px 25px 50px;
+  padding: 25px 0 25px 50px;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -50,7 +50,7 @@ const Body2 = styled.div`
 
 const CheckBox = styled.div`
   display: flex;
-  margin: 5px 0px 20px 420px;
+  margin: 5px 0 20px 420px;
   font-size: 15px;
 `;
 

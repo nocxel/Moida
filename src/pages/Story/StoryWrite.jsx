@@ -8,9 +8,7 @@ import { Editor } from "../Common/Editor";
 
 const StoryWriteContainer = styled.div`
 display: flex;
-
 width: 1200px;
-margin: 0 auto;
 text-align: left;
 margin: 20px auto; /* 전체 마진 20px */
 background-color: white;

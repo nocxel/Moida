@@ -23,7 +23,6 @@ const MyInfoEditBox = styled.div`
     background-color: white;
     border-radius: 10px;
     border: 1px solid #F3F3F3;
-    border-radius: 10px;
     margin-bottom: 50px;
   }
   
@@ -133,12 +132,12 @@ const ProfileBox = styled.div`
 const MyInfo = styled.div`
   font-size: 19px;
   font-weight: bold;
-  margin: 0px 10px;
+  margin: 0 10px;
 `;
 
 const Introduce = styled.div`
   font-size: 19px;
-  margin: 0px 0px 20px 0px;
+  margin: 0 0 20px 0;
 `;
 
 // 이미지 초기화
@@ -176,7 +175,7 @@ const ChangeInput = styled.input`
 const ChangeNickname = styled.input`
   display: flex;
   padding: 1px 2px;
-  margin: 0px 10px;
+  margin: 0 10px;
   font-size: 15px;
   height: 30px;
   width: 150px;

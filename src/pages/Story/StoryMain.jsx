@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-// import { Link } from "react-router-dom";
+import React from 'react';
 import styled from 'styled-components';
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import Header from "../Header";
 import searchIcon from "../../Images/search.png";
-// import moment from "moment";
-//import { AiFillCaretDown } from "react-icons";
 import { Category } from "../Common/Category";
 import { StoryBlock } from "../Common/StoryBlock";
 

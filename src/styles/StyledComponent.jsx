@@ -1,5 +1,4 @@
-import { Form } from "react-router-dom";
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import { createGlobalStyle} from "styled-components";
 
 // 전역스타일링: 모든 곳에 쓰이는 style입니다.

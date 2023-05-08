@@ -26,7 +26,6 @@ const Container = styled.div`
     height: 200px;
     margin-right: 50px;
     border: 1px solid #F3F3F3;
-    border-radius: 10px;
   }
 `
 const ProfileBox = styled.div`
@@ -53,7 +52,7 @@ const InfoText = styled.p`
 
 const MyInfo = styled.div`
   font-size: 19px;
-  margin: 0px 20px 20px 10px;
+  margin: 0 20px 20px 10px;
 `;
 
 const InfoTextPhone = styled.div`

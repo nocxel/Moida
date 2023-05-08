@@ -56,7 +56,7 @@ export const StoryBlock = ({ story_id, img_url, study_name, title }) => {
       navigate('/Story/Post');
     }}>
       <div className="story-body">
-        <img src={img_url} />
+        <img src={img_url} alt='#'/>
 
         <div className="story-body-text">
           <StudyName>{study_name}</StudyName>

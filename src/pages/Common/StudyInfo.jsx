@@ -56,8 +56,7 @@ const StyledStudyInfo = styled.div`
         border-radius: 50%;
         background-color: #E2fff9;
         display: flex;
-        margin: 15px;
-        margin-left: 0px;
+        margin: 15px 15px 15px 0;
     }
 
     .StudyName {      
@@ -92,7 +91,7 @@ const StyledStudyInfo = styled.div`
         margin-left: auto;
         margin-right: 15px;
         font-size: 18px;
-        margin-top:0px;
+        margin-top:0;
     }
 
     .itemText{
@@ -110,7 +109,7 @@ const InnerContainer = ({ study_link, study_mgr_id, study_user_limit, study_user
             <div className='StudyContainer'>
                 <h2 className='item2'>채팅방</h2>
                 <h2>{study_link}</h2>
-                <p className='itemPerson'>{study_mgr_id}<img className='person' src={userImg} />{study_user_count}/{study_user_limit}</p>
+                <p className='itemPerson'>{study_mgr_id}<img className='person' src={userImg} alt='#'/>{study_user_count}/{study_user_limit}</p>
             </div>
         </StyledInnerContainer>
     )

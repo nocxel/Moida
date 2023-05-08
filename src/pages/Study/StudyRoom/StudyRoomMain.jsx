@@ -1,8 +1,6 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import Header from "../../Header";
 import HeaderStudy from "../../HeaderStudy";
-import styled from "styled-components";
 import { StudyRoom } from "../../../styles/StyledComponent";
 
 

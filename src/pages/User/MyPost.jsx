@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 import HeaderMyPage from "../HeaderMyPage";
 import Header from "../Header";
 
@@ -28,7 +27,6 @@ const InfoContainer = styled.div`
   background-color: white;
   border-radius: 10px;
   border: 1px solid #F3F3F3;
-  border-radius: 10px;
 `;
 
 const Title = styled.p`

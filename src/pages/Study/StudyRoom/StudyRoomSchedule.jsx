@@ -27,7 +27,7 @@ const StyledSchedulBox = styled.div`
     .date {
         font-size : 32px;
         font-weight : bolder;
-        margin : 0px;
+        margin : 0;
         padding-top: 25px;
         padding-left: 25px;
 
@@ -97,7 +97,7 @@ const AddButton = styled.button`
     width: 100%;
     font-size: 18px;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px;
     `;
 
 const Box = styled.div`
@@ -126,7 +126,7 @@ const SchedulBox = ({study_sc_date, study_sc_content, study_name, study_member_c
                     <h2 className="scName">{study_sc_content}</h2>
                     <div className="member" onClick={() => { setMember(!member)
                     }}>
-                        <img src={user} width={"20px"}/>
+                        <img src={user} width={"20px"} alt='#'/>
                         <p style={{fontSize:"18px"}}>{study_member_count}/{study_user_count}</p>
                         {member && (
                             <MyDiv>{study_user_name}</MyDiv>

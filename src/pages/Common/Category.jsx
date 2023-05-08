@@ -93,12 +93,12 @@ export const Category = ({array}) => {
         <StyledCategory arrayStyle={arrayStyle}>
             <InputLabel>카테고리</InputLabel>
 
-            <div class="dropdown">
-                <button class="dropbtn">
+            <div className="dropdown">
+                <button className="dropbtn">
                     View More
                     <img className="DropDownImg" src={dropDownImg} alt="아이콘" />
                 </button>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                     <li>언어</li>
                     <li>코딩</li>
                     <li>취미</li>
