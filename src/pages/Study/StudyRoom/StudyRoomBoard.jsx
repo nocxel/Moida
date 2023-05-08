@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../../Header";
 import HeaderStudy from "../../HeaderStudy";
-import { BigTitle, BoardBox, BoardContainerWrapper, Profile, SmaillTitle, StudyRom } from "../../../styles/StyledComponent";
+import { BigTitle, BoardBox, BoardContainerWrapper, Profile, SmallTitle, StudyRoom } from "../../../styles/StyledComponent";
 import styled from "styled-components";
 import { Button } from "../../../styles/StyledComponent";
 import like from "../../../Images/like.png"
@@ -28,7 +28,7 @@ const StudyRoomBoard = () => {
         <Header/>
         <HeaderStudy/>
         
-        <StudyRom>
+        <StudyRoom>
             <Title><h1>스터디 보드 📋</h1> <Button className="button">글쓰기</Button></Title>
             <BoardBox>
                     <BoardContainerWrapper> 
@@ -69,7 +69,7 @@ const StudyRoomBoard = () => {
                     
                     
                 </BoardBox>
-        </StudyRom>
+        </StudyRoom>
        
         </>
     );

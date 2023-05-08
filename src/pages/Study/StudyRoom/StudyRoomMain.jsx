@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Header from "../../Header";
 import HeaderStudy from "../../HeaderStudy";
 import styled from "styled-components";
-import { StudyRom } from "../../../styles/StyledComponent";
+import { StudyRoom } from "../../../styles/StyledComponent";
 
 
 const StudyRoomMain = () => {
@@ -12,9 +12,9 @@ const StudyRoomMain = () => {
         <>
         <Header/>
         <HeaderStudy/>
-        <StudyRom>
+        <StudyRoom>
             <div style={{fontSize:"18px", width:"900px"}}>{content}</div>
-        </StudyRom>
+        </StudyRoom>
 
 
         </>

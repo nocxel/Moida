@@ -1,3 +1,4 @@
+import { Form } from "react-router-dom";
 import styled, {css} from 'styled-components';
 import { createGlobalStyle} from "styled-components";
 
@@ -31,7 +32,7 @@ const BigTitle = styled.text`
     font-weight: bolder;
 `;
 
-const SmaillTitle = styled.text`
+const SmallTitle = styled.text`
     font-size: 18px;
     color: ${props => props.color || 'black'};
     font-weight: bolder;
@@ -55,6 +56,19 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
+const InputButton = styled.button`
+  width: 100px;
+  font-size:17px;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 8px;
+  background-color: rgb(107, 78, 254);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 const BlockBox = styled.div`
     background-color : white;
     border-radius: 20px;
@@ -69,7 +83,7 @@ const MyDiv = styled.div`
     background-color: red;
 `;
 
-const StudyRom = styled.div`
+const StudyRoom = styled.div`
     padding-top: 150px;
     padding-left: 250px;
     width: 900px;
@@ -82,7 +96,6 @@ const Profile = styled.div`
     border-radius: 50%;
     width: 50px;
     height: 50px;
-
 `;
 
 const BoardBox = styled.div`
@@ -105,7 +118,35 @@ const BoardContainerWrapper = styled.div`
     align-items:center;
 `;
 
+const InputLabel = styled.p`
+  text-align: left;
+  width: 100px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  margin-right: 10px;
+`;
+
+const InputLabelBig = styled.p`
+  text-align: left;
+  width: 150px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  margin-right: 10px;
+`;
 
 
-export {BigTitle, SmaillTitle, Search, Button, BlockBox, Container, MyDiv, StudyRom, Profile, BoardBox, BoardContainerWrapper};
+const Input = styled.input`
+  width: 300px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #e4e4e4;
+  border-radius: 4px;
+`;
+
+
+export {BigTitle, SmallTitle, Search, Button, InputButton, BlockBox, Container, MyDiv, StudyRoom, Profile, BoardBox, BoardContainerWrapper, InputLabel, InputLabelBig, Input};
 export default GlobalStyle;

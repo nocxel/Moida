@@ -6,6 +6,7 @@ import Header from "../Header";
 
 const Container = styled.div`
   margin-top: 93px;
+  margin-left: 200px;
   display: flex;
   justify-content: center;
 `
@@ -13,7 +14,7 @@ const MyPostContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1200px;
+  width: 1000px;
   padding: 25px 100px 25px 100px;
   background-color: #F3F3F3;
 `;
@@ -21,7 +22,7 @@ const MyPostContainer = styled.div`
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 800px;
   height: 500px;
   padding: 16px;
   background-color: white;
@@ -42,9 +43,10 @@ const Title = styled.p`
 
 const MyPost = () => {
     return(
+    <><Header />
+      <HeaderMyPage />
         <Container>
-            <Header />
-            <HeaderMyPage />
+            
             <MyPostContainer>
         
         <div>
@@ -61,7 +63,8 @@ const MyPost = () => {
 
         </div>
         </MyPostContainer>
-    </Container>
+    </Container></>
+    
     );
 };
 

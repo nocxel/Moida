@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Header from "../../Header";
 import HeaderStudy from "../../HeaderStudy";
 import Calendar from "react-calendar";
-import { BoardBox, BoardContainerWrapper, StudyRom } from "../../../styles/StyledComponent";
+import { BoardBox, BoardContainerWrapper, StudyRoom } from "../../../styles/StyledComponent";
 import 'react-calendar/dist/Calendar.css';
 import '../../../styles/calendar.css';
 import styled from "styled-components";
@@ -16,6 +16,7 @@ const CalendarBox = () => {
             ></Calendar>
     );
 };
+
 const StyledSchedulBox = styled.div`
     background-color: white;
     width: 600px;
@@ -64,6 +65,8 @@ const StyledSchedulBox = styled.div`
         margin-top: -30px;
     }
 
+
+
    
 `;
 const StyledSchedulBoxContainer = styled.div`
@@ -97,6 +100,11 @@ const AddButton = styled.button`
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     `;
 
+const Box = styled.div`
+    width : 950px;
+    padding-left: 140px;
+    justify-content: center;
+`;
 
 const SchedulBox = ({study_sc_date, study_sc_content, study_name, study_member_count, study_user_count, study_color, study_user_name}) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -141,9 +149,11 @@ const StudyRoomSchedule = () => {
         <>
         <Header/>
         <HeaderStudy/>
-        <StudyRom>
-            <h1 style={{paddingBottom : "50px", marginTop:"0"}}>스터디 일정 📆</h1>
+        <StudyRoom>
+            <h1 style={{paddingBottom : "50px", marginTop:"0"}}>스터디 일정 🗓</h1>
+            <Box>
             <CalendarBox></CalendarBox>
+            </Box>
             <BoardBox>
                 <BoardContainerWrapper>
                         <SchedulBox
@@ -153,7 +163,7 @@ const StudyRoomSchedule = () => {
                             study_member_count={"3"}
                             study_user_count={"20"}
                             study_color={"#000000"}
-                            study_user_name={"윤홍비 정수민 한다혜 홍상우"}
+                            study_user_name={"윤홍비 김수민 한다혜 홍상우"}
                         />
                         <SchedulBox
                             study_sc_date={"3/21"}
@@ -162,7 +172,7 @@ const StudyRoomSchedule = () => {
                             study_member_count={"3"}
                             study_user_count={"20"}
                             study_color={"#000000"}
-                            study_user_name={"윤홍비 정수민 한다혜 홍상우"}
+                            study_user_name={"윤홍비 김수민 한다혜 홍상우"}
                         />
                         <SchedulBox
                             study_sc_date={"3/21"}
@@ -171,12 +181,12 @@ const StudyRoomSchedule = () => {
                             study_member_count={"3"}
                             study_user_count={"20"}
                             study_color={"#000000"}
-                            study_user_name={"윤홍비 정수민 한다혜 홍상우"}
+                            study_user_name={"윤홍비 김수민 한다혜 홍상우"}
                         />
                         <AddSc size={600} marginRight={140}></AddSc>
                 </BoardContainerWrapper>
             </BoardBox>
-        </StudyRom>
+        </StudyRoom>
         </>
     );
 };

@@ -10,19 +10,17 @@ import StudyMain from './pages/Study/Main/StudyMain';
 import StudyRoomMain from './pages/Study/StudyRoom/StudyRoomMain';
 import StudyRoomSchedule from './pages/Study/StudyRoom/StudyRoomSchedule';
 import StudyRoomBoard from './pages/Study/StudyRoom/StudyRoomBoard';
-import StudyRoomMember from './pages/Study/StudyRoom/StydyRoomMember';
+import StudyRoomMember from './pages/Study/StudyRoom/StudyRoomMember';
 
 import StoryMain from './pages/Story/StoryMain';
 import StoryPost from './pages/Story/StoryPost';
 import StoryWrite from './pages/Story/StoryWrite';
 
-import LoungeFree from './pages/Lounge/LoungeFree';
-import LoungeQnA from './pages/Lounge/LoungeQnA';
 import LoungePost from './pages/Lounge/LoungePost';
 import LoungeWrite from './pages/Lounge/LoungeWrite';
 import SearchAll from './pages/Lounge/SearchAll';
 
-import Mypage from "./pages/User/Mypage";
+import MyPage from "./pages/User/MyPage";
 import MyPost from './pages/User/MyPost';
 import SignIn from './pages/User/SignIn';
 import SignUp from './pages/User/SignUp';
@@ -61,7 +59,7 @@ function App() {
                     <Route path='/Lounge/Write' element={<LoungeWrite/>}/>
                     <Route path='/Lounge/SearchAll' element={<SearchAll/>}/>
 
-                    <Route path='/Mypage' element={<Mypage/>}/>
+                    <Route path='/Mypage' element={<MyPage/>}/>
                     <Route path='/Signln' element={<SignIn/>}/>
                     <Route path='/SignUp' element={<SignUp/>}/>
                     <Route path='/Mypage/MemberDelete' element={<MemberDelete/>}/>

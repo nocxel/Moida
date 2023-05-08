@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import Modal from "../utils/Modal";
+import FindMember from "./FindMember";
+import { InputLabel, Input, InputButton} from "../../styles/StyledComponent";
 
 const SignContainer = styled.div`
   display: flex;
@@ -51,36 +54,36 @@ const Body2 = styled.div`
   background-color: rgb(107, 78, 254);
 `;
 
-const InputLabel = styled.p`
-  text-align: left;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: bold;
-  font-size: 19px;
-  margin-right: 10px;
-`;
+// const InputLabel = styled.p`
+//   text-align: left;
+//   font-family: 'Noto Sans KR', sans-serif;
+//   font-weight: bold;
+//   font-size: 19px;
+//   margin-right: 10px;
+// `;
 
-const Input = styled.input`
-  width: 300px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  flex: 1;
-  padding: 8px;
-  border: 2px solid #e4e4e4;
-  border-radius: 4px;
-`;
+// const Input = styled.input`
+//   width: 300px;
+//   font-family: 'Noto Sans KR', sans-serif;
+//   font-size: 15px;
+//   flex: 1;
+//   padding: 8px;
+//   border: 2px solid #e4e4e4;
+//   border-radius: 4px;
+// `;
 
-const Button = styled.button`
-  width: 100px;
-  font-size:17px;
-  font-family: 'Noto Sans KR', sans-serif;
-  padding: 8px;
-  margin-top: 20px;
-  background-color: rgb(107, 78, 254);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
+// const Button = styled.button`
+//   width: 100px;
+//   font-size:17px;
+//   font-family: 'Noto Sans KR', sans-serif;
+//   padding: 8px;
+//   margin-top: 20px;
+//   background-color: rgb(107, 78, 254);
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+// `;
 
 const Find = styled.p`
   display: flex;
@@ -95,35 +98,38 @@ const SignUp = styled.p`
   margin-right: 10px;
 `;
 
-
-
 const SignIn = () => {
-    return(
-        <SignContainer>
-          <Form>
-            <Title>로그인</Title>
+  const [modalOpen, setModalOpen] = useState(false);
+
+const closeModal = () => {
+    setModalOpen(false);
+};
+  
+
+  return (
+    <SignContainer>
+      <Form>
+        <Title>로그인</Title>
+        <Body>
+          <Body1>
+            <InputLabel>아이디</InputLabel>
+            <Input type="id" placeholder="아이디를 입력해주세요." required/>
+            <InputLabel>비밀번호</InputLabel>
+            <Input type="password" placeholder="비밀번호를 입력해주세요." required/>
             <Body>
-              <Body1>
-                <InputLabel>이메일</InputLabel>
-                <Input type="email" placeholder="이메일을 입력해주세요." required/>
-              
-                <InputLabel>비밀번호</InputLabel>
-                <Input type="password" placeholder="비밀번호를 입력해주세요." required/>
-              <Body>
-                <Find><Link to="/FindMember">아이디/비밀번호 찾기</Link></Find>
-                <SignUp><Link to="/SignUp">모이다가 처음이세요?</Link></SignUp>
-              </Body>
-              </Body1>
-              
+              <Find><Link type="button" onClick={() => setModalOpen(true)}>아이디/비밀번호 찾기</Link></Find>
+              <SignUp><Link to="/SignUp">모이다가 처음이세요?</Link></SignUp>
             </Body>
-
-            <Button type="submit">로그인</Button>
-          </Form>
-
-          <Body2>   
-          </Body2>
-        </SignContainer>
-    );
+          </Body1>
+        </Body>
+        <InputButton type="submit">로그인</InputButton>
+      </Form>
+      <Body2>   
+      </Body2>
+      <Modal open={modalOpen} close={closeModal}><FindMember/></Modal>
+    </SignContainer>
+    
+  );
 };
 
 export default SignIn;

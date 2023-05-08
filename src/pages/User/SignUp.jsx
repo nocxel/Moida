@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import { InputLabel, InputLabelBig, Input, InputButton} from "../../styles/StyledComponent";
 
 const SignContainer = styled.div`
-  max-width: 800px;
+  width: 800px;
   text-align: left;
   margin: 20px auto;
-  padding: 25px;
+  padding: 25px 0px 25px 50px;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -20,17 +21,16 @@ const Title = styled.div`
 `;
 
 const Form = styled.form`
-  max-width: 800px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
 const Body = styled.form`
+  margin-left: 40px;
   display: flex;
-  max-width: 800px;
   text-align: left;
-  align-items: center;
 `;
 
 const Body1 = styled.div`
@@ -48,53 +48,13 @@ const Body2 = styled.div`
   margin-bottom: 16px;
 `;
 
-const InputLabel = styled.p`
-  text-align: left;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: bold;
-  font-size: 19px;
-  margin-right: 10px;
-`;
-
-const Input = styled.input`
-  width: 300px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  padding: 8px;
-  border: 2px solid #e4e4e4;
-  border-radius: 4px;
-`;
-
-const Button = styled.button`
-  width: 100px;
-  font-size:17px;
-  font-family: 'Noto Sans KR', sans-serif;
-  padding: 8px;
-  background-color: rgb(107, 78, 254);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
 const CheckBox = styled.div`
   display: flex;
-  justify-content: left;
-  margin: 5px 0px 20px 10px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-`;
-
-const CheckboxLabel = styled.label`
-  width: 800px;
-
-  font-family: 'Noto Sans KR', sans-serif;
+  margin: 5px 0px 20px 420px;
   font-size: 15px;
 `;
 
 const InputCheckBox = styled.input`
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
   border: 2px solid #e4e4e4;
   border-radius: 4px;
 `;
@@ -125,30 +85,34 @@ const SignUp = () => {
       <Form>
         <Body>
           <Body1>
-            <InputLabel>이메일</InputLabel>
-            <Input type="email" placeholder="이메일을 입력해주세요." required/>
+            <InputLabel>아이디</InputLabel>
+            <Input type="id" placeholder="아이디를 입력해주세요." required/>
           
             <InputLabel>비밀번호</InputLabel>
             <Input type="password" placeholder="비밀번호를 입력해주세요." required/>
           
-            <InputLabel>비밀번호 확인</InputLabel>
+            <InputLabelBig>비밀번호 확인</InputLabelBig>
             <Input type="password" placeholder="비밀번호를 다시 입력해주세요." required/>
           </Body1>
           <Body2>
-            <InputLabel>이름</InputLabel>
-            <Input type="text" placeholder="이름을 입력해주세요." required/>
+            <InputLabel>닉네임</InputLabel>
+            <Input type="text" placeholder="닉네임을 입력해주세요." required/>
           
             <InputLabel>전화번호</InputLabel>
             <Input type="text" placeholder="전화번호를 입력해주세요." required/>
+
+            <InputLabel>이메일</InputLabel>
+            <Input type="email" placeholder="이메일을 입력해주세요." required/>
           </Body2>
         </Body>
 
         <CheckBox>
         <InputCheckBox type="checkbox" checked={isAgreed} onChange={handleCheckBoxChange}/>
-        <CheckboxLabel>개인 정보 제공에 동의합니다.</CheckboxLabel>
+        <label>개인 정보 제공에 동의합니다.</label>
         </CheckBox>
+
+        <div className='buttonBox'><InputButton type="submit" onClick={handleSignUp}>회원가입</InputButton></div>
         
-        <Button type="submit" onClick={handleSignUp}><Link to="/Home">회원가입</Link></Button>
       </Form>
 
     </SignContainer>
