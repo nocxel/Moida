@@ -1,10 +1,13 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 import Header from "../../Header";
 import HeaderStudy from "../../HeaderStudy";
-import { BigTitle, BoardBox, BoardContainerWrapper, Profile, SmallTitle, StudyRoom } from "../../../styles/StyledComponent";
+import { BoardBox, BoardContainerWrapper, StudyRoom } from "../../../styles/StyledComponent";
 import styled from "styled-components";
 import { Button } from "../../../styles/StyledComponent";
+// import like from "../../../Images/like.png"
 import { Board } from "../../Common/Board";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -14,6 +17,7 @@ const Title = styled.div`
     width: 900px;
     justify-content: space-between;
     align-items:center;
+    
     .button {
         height: 40px;
     }
@@ -21,13 +25,22 @@ const Title = styled.div`
 
 
 const StudyRoomBoard = () => {
+    const navigate = useNavigate();
+
+    const onclickWrite= () => {
+
+      navigate('/StudyRoom/BoardWrite');
+    }
+  
+
+
     return(
         <>
         <Header/>
         <HeaderStudy/>
         
         <StudyRoom>
-            <Title><h1>스터디 보드 📋</h1> <Button className="button">글쓰기</Button></Title>
+            <Title><h1>스터디 보드 📋</h1> <Button className="button" onClick={onclickWrite}>글쓰기</Button></Title>
             <BoardBox>
                     <BoardContainerWrapper> 
                         <Board

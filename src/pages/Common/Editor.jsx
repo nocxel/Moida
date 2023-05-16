@@ -8,7 +8,7 @@ const StyledEditor = styled.div`
 
 .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
   min-height: 600px;
-  width: 1000px;
+  width: 900px;
   margin-bottom: 20px;
 }
 `;

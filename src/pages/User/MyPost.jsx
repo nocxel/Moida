@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import axios from "axios";
 import HeaderMyPage from "../HeaderMyPage";
 import Header from "../Header";
 
 const Container = styled.div`
-  margin-top: 93px;
+  margin-top: 90px;
   margin-left: 200px;
   display: flex;
   justify-content: center;
@@ -27,6 +28,7 @@ const InfoContainer = styled.div`
   background-color: white;
   border-radius: 10px;
   border: 1px solid #F3F3F3;
+  border-radius: 10px;
 `;
 
 const Title = styled.p`
@@ -50,6 +52,7 @@ const MyPost = () => {
         <div>
             <Title>내가 작성한 글</Title>
             <InfoContainer>
+              
             </InfoContainer>
 
             <br />

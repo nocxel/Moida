@@ -3,11 +3,13 @@ import styled from "styled-components";
 import HeaderMyPage from "../HeaderMyPage";
 import Header from "../Header";
 import MyInformationEdit from "../Common/MyInformationEdit";
+import plusImg from "../../Images/plus.png"
+import { useNavigate } from "react-router-dom";
 //import { MyInformation } from "../Common/MyInformation";
 //import { Profile } from "../Common/Profile";
 
 const Container = styled.div`
-  margin-top: 93px;
+  margin-top: 90px;
   margin-left: 200px;
 
   .myPageContainer {
@@ -19,17 +21,7 @@ const Container = styled.div`
     background-color: #F3F3F3;
   }
 
-  .infoContainer {
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-    padding: 15px 15px 15px 30px;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid #F3F3F3;
-    border-radius: 10px;
-    margin-bottom: 50px;
-  }
+
 
   .studyContainer {
     display: flex;
@@ -42,13 +34,20 @@ const Container = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
     width: 350px;
     height: 200px;
     margin-right: 50px;
     border: 1px solid #F3F3F3;
     border-radius: 10px;
+    
   }
   
+.plusImg {
+    width: 100px;
+} 
 `
 
 const Title = styled.p`
@@ -61,29 +60,37 @@ const Title = styled.p`
 
 
 const MyPage = () => {
+    const navigate = useNavigate();
 
+    const onClickCreateStudy = () => {
+        navigate('/Study/Create');
+    }
   return (
-  <>
-  <Header />
-  <HeaderMyPage />
-    <Container>
+    <>
+      <Header />
+      <HeaderMyPage />
+      <Container>
         <div className="myPageContainer">
-        <MyInformationEdit/>
+          <MyInformationEdit />
 
-        {/* 내 스터디 */}
-        <div>
-        <Title>내 스터디</Title>
-        <div className="studyContainer">
-          <div className="studyItemContainer">스터디 받아오기</div> 
+          {/* 내 스터디 */}
+          <div>
+            <Title>내 스터디</Title>
+
+            <div className="studyContainer">
+            <div className="studyItemContainer">
+                            <img className="plusImg" src={plusImg} alt="아이콘" onClick={onClickCreateStudy} />
+                        </div>
+       
         </div>
+          </div>
+
         </div>
-          
-  </div>
-    </Container>
+      </Container>
     </>
-  
-    
-    
+
+
+
   );
 };
 

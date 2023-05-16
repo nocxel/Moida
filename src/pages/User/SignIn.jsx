@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Modal from "../utils/Modal";
 import FindMember from "./FindMember";
 import { InputLabel, Input, InputButton} from "../../styles/StyledComponent";
+import {LoginContext} from "../../context/AuthContext";
 
 const SignContainer = styled.div`
   display: flex;
@@ -53,37 +54,6 @@ const Body2 = styled.div`
   height: 480px;
   background-color: rgb(107, 78, 254);
 `;
-
-// const InputLabel = styled.p`
-//   text-align: left;
-//   font-family: 'Noto Sans KR', sans-serif;
-//   font-weight: bold;
-//   font-size: 19px;
-//   margin-right: 10px;
-// `;
-
-// const Input = styled.input`
-//   width: 300px;
-//   font-family: 'Noto Sans KR', sans-serif;
-//   font-size: 15px;
-//   flex: 1;
-//   padding: 8px;
-//   border: 2px solid #e4e4e4;
-//   border-radius: 4px;
-// `;
-
-// const Button = styled.button`
-//   width: 100px;
-//   font-size:17px;
-//   font-family: 'Noto Sans KR', sans-serif;
-//   padding: 8px;
-//   margin-top: 20px;
-//   background-color: rgb(107, 78, 254);
-//   color: white;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-// `;
 
 const Find = styled.p`
   display: flex;

@@ -8,16 +8,16 @@ import { Editor } from "../Common/Editor";
 
 const StoryWriteContainer = styled.div`
 display: flex;
+
 width: 1200px;
+margin: 0 auto;
 text-align: left;
 margin: 20px auto; /* 전체 마진 20px */
 background-color: white;
 flex-direction: column;
 
-.title {
-    margin-left: 45px;
-    margin-top: 0;
-}
+
+
 .StudyList {
     margin-left: 45px;
 }
@@ -30,7 +30,8 @@ form {
     display: flex;
     flex-direction: column;
     max-width: 1000px;
-    padding : 20px 100px 20px 100px;
+    padding : 20px 150px 20px 150px;
+
 }
 
 .list_box {
@@ -49,35 +50,6 @@ const Title = styled.div` /* 1200 140 */
     font-weight: bold;
     font-family: 'Noto Sans KR', sans-serif;
     `;
-
-// const InputLabel = styled.p`
-//   text-align: left;
-//   font-family: 'Noto Sans KR', sans-serif;
-//   font-weight: bold;
-//   font-size: 19px;
-//   margin-right: 10px;
-// `;
-
-// const Input = styled.input`
-//   width: 300px;
-//   font-family: 'Noto Sans KR', sans-serif;
-//   font-size: 15px;
-//   padding: 8px;
-//   border: 2px solid #e4e4e4;
-//   border-radius: 4px;
-// `;
-
-// const Button = styled.button`
-//   width: 100px;
-//   font-size:17px;
-//   font-family: 'Noto Sans KR', sans-serif;
-//   padding: 8px;
-//   background-color: rgb(107, 78, 254);
-//   color: white;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-// `;
 
 
 

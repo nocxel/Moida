@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Link, NavLink, useLocation} from 'react-router-dom';
+import {Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
 import logo from '../Images/LOGO.png';
 import searchIcon from '../Images/search.png';
 import {Button} from '../styles/StyledComponent';
@@ -211,6 +211,7 @@ const IsLogin = () => {
 const Header = () => {
     const {isLogin} = LoginContext();
     const {setIsLogin} = LoginContext();
+    const navigate = useNavigate();
 
     function handleLogout() {
         console.log({isLogin})
@@ -224,7 +225,7 @@ const Header = () => {
                     <NavLink to="/"><Logo src={logo} alt="로고"/></NavLink>
                     <div className='Nav'>
                         <CustomNavLink to="/study" contain="/study" deco={1}>스터디</CustomNavLink>
-                        <CustomNavLink to="/story" contain="/story" deco={1}>스토리</CustomNavLink>
+                        <CustomNavLink to="/story" contain="story" deco={1}>스토리</CustomNavLink>
                         <CustomNavLink to="/lounge/free" contain="/lounge" deco={1}>라운지</CustomNavLink>
                     </div>
                 </div>
