@@ -1,8 +1,15 @@
-
 import React,{ useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import LOGO_imgOnly from "../../Images/LOGO_imgOnly.png";
+//import { LoginContext } from './LoginContext';
+//import AxiosApi from "../axiosApi";
+
+// ---------------------------------다혜 수정예정------------------------------------- //
+// ---------------------------------다혜 수정예정------------------------------------- //
+// ---------------------------------다혜 수정예정------------------------------------- //
+// ---------------------------------다혜 수정예정------------------------------------- //
+// ---------------------------------다혜 수정예정------------------------------------- //
+// ---------------------------------다혜 수정예정------------------------------------- //
 
 const MyInfoEditBox = styled.div`
 
@@ -23,6 +30,7 @@ const MyInfoEditBox = styled.div`
     background-color: white;
     border-radius: 10px;
     border: 1px solid #F3F3F3;
+    border-radius: 10px;
     margin-bottom: 50px;
   }
   
@@ -132,12 +140,12 @@ const ProfileBox = styled.div`
 const MyInfo = styled.div`
   font-size: 19px;
   font-weight: bold;
-  margin: 0 10px;
+  margin: 0px 10px;
 `;
 
 const Introduce = styled.div`
   font-size: 19px;
-  margin: 0 0 20px 0;
+  margin: 0px 0px 20px 0px;
 `;
 
 // 이미지 초기화
@@ -175,7 +183,7 @@ const ChangeInput = styled.input`
 const ChangeNickname = styled.input`
   display: flex;
   padding: 1px 2px;
-  margin: 0 10px;
+  margin: 0px 10px;
   font-size: 15px;
   height: 30px;
   width: 150px;
@@ -193,6 +201,7 @@ const MyInformationEdit = () => {
   const [myInfo, setMyInfo] = useState('자기 소개를 입력하세요.');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [showMyImgInPut, setShowMyImgInPut] = useState(null);
 
@@ -205,13 +214,6 @@ const MyInformationEdit = () => {
   const handleEditmyInfo = () => {
     setIsEditing(true);
     setIsNotAttach(true);
-  };
-
-  const handleSaveMyInfo = () => {
-    setIsEditing(false);
-    alert('저장되었습니다: '
-     + myInfo);
-    setIsNotAttach(false);
   };
 
   const handleMyImgChange = (event) => {
@@ -235,19 +237,31 @@ const MyInformationEdit = () => {
     setMyImg(null); 
   };
 
+   const handleSaveMyInfo = async () => {
+    setIsEditing(false);
+    alert('저장되었습니다: ' + nickname + ', ' + email + ', ' + password);
+    setIsNotAttach(false);
+  
+  //   try {
+  //     const requestData = {
+  //       //userId: userId,
+  //       newNickname: nickname,
+  //       newEmail: email,
+  //       newPassword: password
+  //     };
+  //     const response = await AxiosApi.post("/updateProfile", requestData);
+  //     const success = response.data;
+  //     // Handle success response
+  //     console.log("Profile update success:", success);
+  //   } catch (error) {
+  //     // Handle error
+  //     console.log("Profile update failed:", error.message);
+  //   }
+   };
 
-  // 유저 정보 수정
-  useEffect(() => {
-    axios.get('/user/profile')
-      .then(response => {
-        setEmail(response.data.email);
-        setPhone(response.data.phone);
-        setNickname(response.data.nickname);
-      })
-      .catch(error => {
-        console.error('Failed to fetch user profile:', error);
-      });
-  }, []);
+  const handleNicknameChange = (e) => {
+    setNickname(e.target.value);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -257,8 +271,8 @@ const MyInformationEdit = () => {
     setPhone(e.target.value);
   };
 
-  const handleNicknameChange = (e) => {
-    setNickname(e.target.value);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
   
  
@@ -306,6 +320,12 @@ const MyInformationEdit = () => {
           </ButtonBox></div>
           
           <div className="infoBox">
+          <ButtonBox><InfoText>비밀번호</InfoText>
+          {isEditing ? (
+          <ChangeInput type="password" value={password} onChange={handlePasswordChange} />
+          ) : (
+            <MyInfo>{password}</MyInfo>
+          )}</ButtonBox>
           <ButtonBox><InfoTextPhone>번호 </InfoTextPhone>
           {isEditing ? (
           <ChangeInput type="text" value={phone} onChange={handlePhoneChange} />

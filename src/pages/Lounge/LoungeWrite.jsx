@@ -1,12 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 // import { Link } from "react-router-dom";
 //import { NavLink } from "react-router-dom";
 import Header from "../Header";
 import styled from "styled-components";
-import { Editor } from "../Common/Editor";
-import { InputButton } from "../../styles/StyledComponent";
+import {Editor} from "../Common/Editor";
 import HeaderLounge from "../HeaderLounge";
+import {useNavigate, useParams} from "react-router-dom";
+import {BOARD} from "./LoungeMain";
+import AxiosApi from "../../api/AxiosAPI";
+import Modal from "../utils/Modal";
 
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
 
 const Container = styled.div`
   width: 1200px;
@@ -14,14 +23,6 @@ const Container = styled.div`
   position: relative;
   top: 90px;
 
-/* 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1200px;
-    padding : 20px 100px 20px 100px;
-} */
   .lounge-nav {
     width: 100%;
     margin: 0 auto;
@@ -38,15 +39,15 @@ const Container = styled.div`
 
 const EditorContainer = styled.div`
 
-display: flex;
-width: 1100px;
-/* margin: 0 auto; */
-text-align: left;
-margin: 20px auto; /* 전체 마진 20px */
-padding-bottom: 50px;
-background-color: white;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  width: 1100px;
+  /* margin: 0 auto; */
+  text-align: left;
+  margin: 20px auto; /* 전체 마진 20px */
+  padding-bottom: 50px;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
 
 `;
 
@@ -64,37 +65,52 @@ align-items: center;
 // `;
 
 const LoungeWrite = () => {
+    const navigate = useNavigate();
+    const {boardName} = useParams();
+
+    // 등록 input값
+    const userId = "1";
+    const [inputTitle, setInputTitle] = useState("1");
+    const [inputContents, setInputContents] = useState("");
+    const [inputImgUrl, setInputImgUrl] = useState("");
+
+    // 팝업
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalText, setModelText] = useState("");
+
+
+    // 게시물 등록
+    const onClickRegPost = async() => {
+        const postReg1 = await AxiosApi.postReg(userId, inputTitle, inputContents, boardName, inputImgUrl);
+        console.log("userId = " + userId);
+        console.log("inputTitle = " + inputTitle);
+        console.log("inputContent = " + inputContents);
+        console.log(postReg1.data.result);
+        if (postReg1.data.result === "OK") {
+            navigate(`/lounge/${boardName}`);
+        }// } else {
+        //     setModalOpen(true);
+        //     setModelText("게시물 등록 실패.");
+
+
+    }
+
 
     return (
         <Container>
-            {/* <NavContainer>
-                <Header></Header>
-                <div className='lounge-nav'>
-                    <div className='nav'>
-                        <div className='board-select'>
-                            <NavLink to="/lounge/free" className='board-select-type'
-                                style={{ color: 'var(--maincolor)' }}>자유</NavLink>
-                            <NavLink to="/lounge/qna" className='board-select-type'>고민</NavLink>
-                        </div>
-                    </div>
-                </div>
-            </NavContainer> */}
             <Header/>
             <HeaderLounge/>
             <EditorContainer>
                 <div className='board-top'>
                     <div className='board-title'>
-                        <h1>자유 게시판 🐥</h1>
+                        <h1>{BOARD[boardName]} 게시판🐥</h1>
+
                     </div>
+                    <Editor isTitle={1} inputTitle={inputTitle} inputContents={inputContents} setInputTitle={setInputTitle} setInputContents={setInputContents}/>
 
-                    {/* <InputLabel>제목</InputLabel>
-                    <Input type="post_title" placeholder="제목을 입력해주세요." required /> */}
 
-                    <Editor isTitle={1}></Editor>
-                    {/* <Input type="post_desc" placeholder="내용을 입력해주세요." required /> */}
-
-                    <InputButton type="submit">올리기</InputButton>
-
+                    <button onClick={() => onClickRegPost()} type="submit">올리기</button>
+                    <Modal open={modalOpen} >{modalText}</Modal>
                 </div>
 
             </EditorContainer>

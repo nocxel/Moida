@@ -8,12 +8,9 @@ const StyledStory = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 25px; */
-  /* border-radius: 10px; */
-  cursor: pointer;
   margin: 10px 10px 0 10px;
+  cursor: pointer;
   
-
   .story-body {
     height: 100%;
     display : flex;
@@ -33,7 +30,6 @@ const StyledStory = styled.div`
 `;
 
 const StudyName = styled.div`
-        /* width: 100%; */
         font-size: 1.2rem;
         color: gray;
         justify-content: center;
@@ -56,7 +52,7 @@ export const StoryBlock = ({ story_id, img_url, study_name, title }) => {
       navigate('/Story/Post');
     }}>
       <div className="story-body">
-        <img src={img_url} alt='#'/>
+        <img src={img_url} />
 
         <div className="story-body-text">
           <StudyName>{study_name}</StudyName>

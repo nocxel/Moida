@@ -1,11 +1,18 @@
 import React from "react";
 import Header from "../Header";
-// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { PostTitle } from "../Common/PostTitle";
 import { StudyInfo } from "../Common/StudyInfo";
 import { PostContent } from "../Common/PostContent";
-import CommentsList from "../Common/CommentsList";
+// import CommentsList from "../Common/CommentsList";
+
+
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
 
 
 const Container = styled.div`
@@ -26,7 +33,7 @@ const Container = styled.div`
 
 
 //url주소: /story/post/4654546546{post-id} 
-const StoryPost = ({ title, nickname, recommend, date, content }) => {
+const StoryPost = () => {
     return (
         <Container>
             <Header></Header>

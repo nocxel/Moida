@@ -16,8 +16,8 @@ import StudyBoardWrite from './pages/Study/StudyRoom/StudyBoardWrite';
 import StoryMain from './pages/Story/StoryMain';
 import StoryPost from './pages/Story/StoryPost';
 import StoryWrite from './pages/Story/StoryWrite';
-//
-// import LoungeMain from "./pages/Lounge/LoungeMain";
+
+import LoungeMain from "./pages/Lounge/LoungeMain";
 import LoungePost from './pages/Lounge/LoungePost';
 import LoungeWrite from './pages/Lounge/LoungeWrite';
 import SearchAll from './pages/Lounge/SearchAll';
@@ -32,8 +32,6 @@ import MemberDelete from './pages/User/MemberDelete'
 import StudyCreate from './pages/Study/Main/StudyCreate';
 import {Provider} from "./context/AuthContext";
 
-
-import PostList from "./pages/Lounge/PostList";
 function App() {
     return (
         <>
@@ -62,7 +60,7 @@ function App() {
 
 
                     <Route path='/lounge/:boardName/:postId' element={<LoungePost/>}/>
-                    <Route path='/Lounge/:boardName' element={<PostList/>}/>
+                    <Route path='/Lounge/:boardName' element={<LoungeMain/>}/>
                     <Route path='/Lounge/Write' element={<LoungeWrite/>}/>
                     <Route path='/Lounge/SearchAll' element={<SearchAll/>}/>
 

@@ -1,51 +1,86 @@
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
 import LOGO_imgOnly from "../../Images/LOGO_imgOnly.png"
+//import {LoginContext} from "../../context/AuthContext"
+import AxiosApi from "../../api/AxiosAPI";
 
+const SIZES = {
+  s: css`
+      --width: 32px;
+      --height: 32px;
+      --fontsize1 : 19px;
+      --fontsize2 : 19px;
+    `,
+
+  l: css`
+      --width: 50px;
+      --height : 50px;
+      --fontsize1 : 28px;
+      --fontsize2 : 28px;
+    `
+}
 
 const ProfileContainer = styled.div`
-display: flex;
-width: 200px;
+  ${(p) => p.sizeStyle}
+  display: flex;
+  width: 200px;
+  padding: 10px;
 `;
-// 이미지
+
 const MyImage = styled.img`
-  width: 32px;
-  height: 32px;
+  width: var(--width);
+  height: var(--height);
   object-fit: cover;
   justify-items: center;
   border-radius: 100%;
 `;
 
 const InfoText = styled.p`
-  font-size: 19px;
+  font-size: var(--fontsize1);
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
-  margin-left: 20px;
+  margin-left: 15px;
   margin-top: 0;
 `;
 
 const MyInfo = styled.div`
   font-weight: bold;
-  font-size: 19px;
+  font-size: var(--fontsize2);
   margin-left: 10px;
 `;
 
+export const Profile = ({ size, userId }) => {
+  const sizeStyle = SIZES[size];
+  const [showMyImgInPut, setShowMyImgInPut] = useState('');
+  const [myImg, setMyImg] = useState(null);
+  const [nickname, setNickname] = useState('');
 
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await AxiosApi.getNickname(userId);
+        setNickname(response.data.nickname);
+      } catch (error) {
+        console.log('프로필 데이터 가져오기 에러:', error.message);
+      }
+    };
 
-export const Profile = ({showMyImgInPut, myImg, nickname}) => {
+    fetchProfileData();
+  }, [userId]);
 
-    return (
-        <ProfileContainer>
-          {showMyImgInPut ? (
-            <MyImage src={showMyImgInPut} alt="이미지 미리보기" />
-          ) : (
-            myImg ? ( // 선택된 파일이 있으면 파일 미리보기
-              <MyImage src={URL.createObjectURL(myImg)} alt="이미지 미리보기" />
-            ) : ( // 선택된 파일이 없으면 기본 이미지 보여주기
-              <MyImage src={LOGO_imgOnly} alt="기본 이미지"/>
-            )
-          )}
-            <MyInfo>{nickname}</MyInfo>
-            <InfoText>님</InfoText>
-        </ProfileContainer>
-    );    
+  return (
+    <ProfileContainer sizeStyle={sizeStyle}>
+      {showMyImgInPut ? (
+        <MyImage src={showMyImgInPut} alt="이미지 미리보기" />
+      ) : (
+        myImg ? (
+          <MyImage src={URL.createObjectURL(myImg)} alt="이미지 미리보기" />
+        ) : (
+          <MyImage src={LOGO_imgOnly} alt="기본 이미지" />
+        )
+      )}
+      <MyInfo>{nickname}</MyInfo>
+      <InfoText>님</InfoText>
+    </ProfileContainer>
+  );
 };

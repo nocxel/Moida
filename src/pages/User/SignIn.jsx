@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from 'react';
+import { LoginContext } from '../../context/AuthContext';
+import { useNavigate, Link } from "react-router-dom";
 import styled from 'styled-components';
 import Modal from "../utils/Modal";
 import FindMember from "./FindMember";
-import { InputLabel, Input, InputButton} from "../../styles/StyledComponent";
-import {LoginContext} from "../../context/AuthContext";
+import { InputLabel, Input, InputButton } from "../../styles/StyledComponent";
+import AxiosApi from '../../api/AxiosAPI';
 
 const SignContainer = styled.div`
   display: flex;
@@ -24,14 +25,14 @@ const Title = styled.div`
   margin-bottom: 24px;
 `;
 
-const Form = styled.form`
+const Form = styled.div`
   max-width: 800px;
   padding: 25px;
   display: flex;
   flex-direction: column;
 `;
 
-const Body = styled.form`
+const Body = styled.div`
   display: flex;
   max-width: 800px;
   text-align: left;
@@ -69,12 +70,24 @@ const SignUp = styled.p`
 `;
 
 const SignIn = () => {
+  const { username, password, setUsername, setPassword, setIsLogin, setUserId } = useContext(LoginContext);
   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-const closeModal = () => {
+  const closeModal = () => {
     setModalOpen(false);
-};
-  
+  };
+
+  const onClickLogin = async () => {
+    try {
+      const response = await AxiosApi.signIn(username, password);
+      navigate('/');
+      setIsLogin(true);
+      setUserId(response.data.userId);
+    } catch (error) {
+      console.log('로그인 에러:', error.message);
+    }
+  };
 
   return (
     <SignContainer>
@@ -83,23 +96,25 @@ const closeModal = () => {
         <Body>
           <Body1>
             <InputLabel>아이디</InputLabel>
-            <Input type="id" placeholder="아이디를 입력해주세요." required/>
+            <Input type="id" placeholder="아이디를 입력해주세요." value={username} onChange={(e) => setUsername(e.target.value)} required />
             <InputLabel>비밀번호</InputLabel>
-            <Input type="password" placeholder="비밀번호를 입력해주세요." required/>
+            <Input type="password" placeholder="비밀번호를 입력해주세요." value={password} onChange={(e) => setPassword(e.target.value)} required />
             <Body>
               <Find><Link type="button" onClick={() => setModalOpen(true)}>아이디/비밀번호 찾기</Link></Find>
               <SignUp><Link to="/SignUp">모이다가 처음이세요?</Link></SignUp>
             </Body>
           </Body1>
         </Body>
-        <InputButton type="submit">로그인</InputButton>
+        {(username && password) ?
+          <InputButton onClick={onClickLogin}>로그인</InputButton> :
+          <InputButton >로그인</InputButton>}
       </Form>
-      <Body2>   
+      <Body2>
       </Body2>
-      <Modal open={modalOpen} close={closeModal}><FindMember/></Modal>
+      <Modal open={modalOpen} close={closeModal}><FindMember /></Modal>
     </SignContainer>
-    
   );
+
 };
 
 export default SignIn;

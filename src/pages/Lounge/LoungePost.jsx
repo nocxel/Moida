@@ -1,18 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header";
 import styled from "styled-components";
 import CommentsList from "../Common/CommentsList";
 import HeaderLounge from "../HeaderLounge";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AxiosAPI from "../../api/AxiosAPI";
-import {LoungePostTitle} from "../Common/LoungePostTitle";
+import { LoungePostTitle } from "../Common/LoungePostTitle";
+
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
 
 const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
   position: relative;
   top: 90px;
-  
+
 
   .content {
     font-size: 1.6rem;
@@ -23,7 +30,7 @@ const Container = styled.div`
 `;
 
 
-// 2안 선택
+// 2안 선택idt
 // lounge/ boardName / postId
 // why?
 // 1. postId 1개로만 받는 경우: url 주소 : /lounge/post/:postId
@@ -38,13 +45,13 @@ const Container = styled.div`
 
 const LoungePost = () => {
 
-    const {boardName, postId} = useParams();
-    const [post ,setPost] = useState(null);
+    const { boardName, postId } = useParams();
+    const [post, setPost] = useState(null);
     const [comments, setComments] = useState([]);
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        const viewPost = async() => {
+        const viewPost = async () => {
             try {
                 const rsp = await AxiosAPI.postViewGet(boardName, postId);
                 setPost(rsp.data);
@@ -60,15 +67,16 @@ const LoungePost = () => {
     return (
 
         <Container>
-            <Header/>
-            {post && <HeaderLounge boardName={post.boardName}/>}
+            <Header />
+            {post && <HeaderLounge boardName={post.boardName} />}
 
             {post && <LoungePostTitle
                 size='l'
                 post={post}
             />}
             <div className="content">
-            {post && post.contents}
+
+                {post && <p dangerouslySetInnerHTML={{ __html: post.contents.toString() }}></p>}
             </div>
             {post && <CommentsList commentsList={post.comments} page={page} setPage={setPage} />}
 

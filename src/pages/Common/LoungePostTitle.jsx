@@ -1,35 +1,27 @@
-import { HandThumbsUp } from "react-bootstrap-icons";
+import ThumbsUp from "../../Images/thumbsup.png";
 import React from "react";
 import styled, { css } from "styled-components";
+import { formatRegTime } from "./formatRegTime";
 
-// 사용법
-// import PostTitle from .. import 하고
-// <PostTitle
-//          size='s'  // 크기타입 : 스토리 s, 라운지: l
-//          title='제목'
-//          nickname='닉네임'
-//          img_url='사진 url'
-//          date='날짜'
-//          recommend='추천수'
-//         ></PostTitle>
+// postTitle에서 분할구조로 더 깔끔하게 표현하기 위해 만듬
+// story에서도 쓸 수 있게 추후 이 파일로 수정할 예정
 
 const SIZES = {
   s: css`
       --width: 750px;
-      --height: 220px;
+      --height: 190px;
       --body-width: 72%;
       --body-padding: 50px 55px 50px 50px;
-      --thumbsup: 4.2rem;
+      --thumbsup: 42px;
     `,
   l: css`
       --width: 1200px;
-      --height : 220px;
+      --height : 190px;
       --body-width: 80%;
       --body-padding: 35px 90px 35px 90px;
-      --thumbsup: 4.5rem;
+      --thumbsup: 45px;
     `
 }
-
 const StyledPostTitle = styled.div`
   ${(p) => p.sizeStyle}
   
@@ -47,11 +39,12 @@ const StyledPostTitle = styled.div`
     padding: var(--body-padding);
     margin: 0;
     
+    
     .title {
       font-size: 3.2rem;
       font-weight: bold;
     }
-
+    
     .info {
       display: flex;
       width: 30%;
@@ -65,10 +58,11 @@ const StyledPostTitle = styled.div`
         border-radius: 50%;
       }
       
-    .nickname {
+      .nickname {
         padding-left: 15px;
         font-size: 1.7rem;
       }
+      
     }
   }
   
@@ -85,10 +79,8 @@ const StyledPostTitle = styled.div`
       align-items: center;
     }
     
-    h1 {
-      font-size: var(--thumbsup);
-      align-items: center;
-      padding-top: 14px;
+    .thumbsup {
+      width: var(--thumbsup);
     }
     
     h3 {
@@ -98,10 +90,12 @@ const StyledPostTitle = styled.div`
     
     .date {
       font-size: 1.7rem;
-    } 
+    }
   }
 `;
-export const PostTitle = ({ size, img_url, nickname, title, date, recommend }) => {
+
+export const LoungePostTitle = ({ size, post }) => {
+  const { imgUrl, nickname, title, recommend, regTime } = post;
   const sizeStyle = SIZES[size];
 
   return (
@@ -109,18 +103,17 @@ export const PostTitle = ({ size, img_url, nickname, title, date, recommend }) =
       <div className="post-title-body">
         <div className="title">{title}</div>
         <div className="info">
-          <img src={img_url} alt="#" />
+          <img src={imgUrl} alt="#" />
           <div className="nickname">{nickname}</div>
         </div>
       </div>
 
       <div className="post-title-side">
         <div className="recommend">
-          <h1><HandThumbsUp /></h1><h3>{recommend}</h3>
+          <img className="thumbsup" src={ThumbsUp} alt="#" /><h3>{recommend}</h3>
         </div>
-        <div className="date">{date}</div>
+        <div className="date">{formatRegTime(regTime)}</div>
       </div>
-
     </StyledPostTitle>
 
   )

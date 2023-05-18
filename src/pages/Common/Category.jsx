@@ -7,10 +7,12 @@ const ARRAYS = {
   r: css`
     --flex-direction: row;
     --margin-top: 10px;
+    --margin-left: -20px;
   `,
   c: css`
     --flex-direction: column;
     --margin-top: 0px;
+    --margin-left: 0px;
   `
 }
 
@@ -26,6 +28,7 @@ const StyledCategory = styled.div`
   position : relative;
   display : inline-block;
   align-items: center;
+  margin-left: var(--margin-left);
 }
 
 .dropbtn{
@@ -93,12 +96,12 @@ export const Category = ({array}) => {
         <StyledCategory arrayStyle={arrayStyle}>
             <InputLabel>카테고리</InputLabel>
 
-            <div className="dropdown">
-                <button className="dropbtn">
+            <div class="dropdown">
+                <button class="dropbtn">
                     View More
                     <img className="DropDownImg" src={dropDownImg} alt="아이콘" />
                 </button>
-                <div className="dropdown-content">
+                <div class="dropdown-content">
                     <li>언어</li>
                     <li>코딩</li>
                     <li>취미</li>

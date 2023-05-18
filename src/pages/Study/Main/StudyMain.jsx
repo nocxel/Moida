@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
 import Header from "../../Header";
-import plusImg from "../../../Images/plus.png";
-import menuImg from "../../../Images/menu.png"
 import { useNavigate } from "react-router-dom";
 import { StudyList } from "../../Common/StudyList";
 
@@ -11,8 +8,14 @@ import { StudyList } from "../../Common/StudyList";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import '../../../styles/calendar.css';
-import { StudyInfo } from "../../Common/StudyInfo";
+// import { StudyInfo } from "../../Common/StudyInfo"; 
 
+
+// ---------------------------------수민 수정예정------------------------------------- //
+// ---------------------------------수민 수정예정------------------------------------- //
+// ---------------------------------수민 수정예정------------------------------------- //
+// ---------------------------------수민 수정예정------------------------------------- //
+// ---------------------------------수민 수정예정------------------------------------- //
 
 
 const CalendarBox = () => {
@@ -60,6 +63,7 @@ flex-direction: column;
     margin-left: 70px;
     border: 1px solid #F3F3F3;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .plusImg {
@@ -93,6 +97,7 @@ flex-direction: column;
     margin: 0;
 }
 
+
 // 스터디 박스
 
 /* .listAll_box {
@@ -114,8 +119,6 @@ flex-direction: column;
     padding : 30px 0 0 60px;
     width: 300px;
 }
-
-
 
 
 .new_study {
@@ -157,12 +160,18 @@ const StudyMain = () => {
                     <div className="list_box">
                         <h1 className="title_my">나의 스터디 📚</h1>
                         <div className="item">
-                            <div className="item-1">
+
+                            {/* 컴포넌트 수정 예정 */}
+                            {/* <div className="item-1">
                                 <img className="plusImg" src={plusImg} alt="아이콘" onClick={onClickCreateStudy} />
                             </div>
                             <div className="item-1" onClick={onClickStudyRoom}>
-                                <h2>스터디룸 확인용</h2>
-                            </div>
+                                <StudyDesc size={"xs"} study_profile={"#fffff"}
+                                    study_name={"백준방범대"}
+                                    study_tag={"#코딩 #자바"}
+                                    study_intro={"스터디 설명입니다. 스터디 설명입니다. 스터디 설명입니다. 스터디 설명입니다. 스터디 설명입니다."} 
+                                    isMember={1}/>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -178,22 +187,6 @@ const StudyMain = () => {
 
                     </div>
                 </form>
-
-                {/* <div className="listAll_box">
-
-                    <div className="study_menu">
-                        <h1 className="title_all">New✨ 스터디💬</h1>
-                        <img className="menuImg" src={menuImg} alt="아이콘" onClick={onClickStudyList} />
-                    </div>
-                    <div className="new_study">
-                        <Study study_title="백준방법대"
-                            studydesc="함께 코딩 테스트를 준비하는 스터디입니다!"
-                            studytag="#코딩 #자바"
-                            date="2023-04-20"
-                        ></Study>
-
-                    </div>
-                </div> */}
                 <StudyList></StudyList>
 
             </StudyContainer>

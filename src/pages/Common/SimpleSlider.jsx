@@ -3,10 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import StoryIntro from "../../Images/StoryIntro.jpg";
-import MyPageIntro from "../../Images/MyPageIntro.jpg";
-import LoungeIntro from "../../Images/LoungeIntro.jpg";
-
+import StoryIntro from "../../Images/StoryIntro.png";
+import MyPageIntro from "../../Images/MyPageIntro.png";
+import LoungeIntro from "../../Images/LoungeIntro.png";
 
 const StyledSlider = styled(Slider)`
     .slick-dots li button:before
@@ -29,14 +28,16 @@ const StyledSlider = styled(Slider)`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 .slick-dots li.slick-active button:before
 {
     opacity: 1;
     color: #6b4efe;
 }
+
 img {
   width: 1200px;
-  height: 300px;
+  height: 400px;
 }
 `;
 
@@ -48,20 +49,20 @@ export default class SimpleSlider extends Component {
       speed: 700,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay:true,
-      autoplaySpeed : 3000
+      autoplay: true,
+      autoplaySpeed: 3000
     };
     return (
       <div>
         <StyledSlider {...settings}>
           <div className="img">
-            <img src={StoryIntro}/>
+            <img src={StoryIntro} />
           </div>
           <div className="img">
-          <img src={MyPageIntro}/>
+            <img src={MyPageIntro} />
           </div>
           <div className="img">
-          <img src={LoungeIntro}/>
+            <img src={LoungeIntro} />
           </div>
         </StyledSlider>
       </div>

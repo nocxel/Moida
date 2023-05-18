@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import {Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../Images/LOGO.png';
 import searchIcon from '../Images/search.png';
-import {Button} from '../styles/StyledComponent';
-import {useEffect, useState} from 'react';
+import { Button } from '../styles/StyledComponent';
+import { useContext, useState } from 'react';
 import LogOut from '../Images/logout.png'
 import MyPerson from '../Images/user.png'
 import CustomNavLink from "./Common/CustomNavLink";
-import {LoginContext} from "../context/AuthContext";
+import { LoginContext } from "../context/AuthContext";
+import { Profile } from './Common/Profile';
 
 
 const Container = styled.div`
@@ -118,40 +119,25 @@ const LoginButton = styled(Button)`
 
 
 const IsLogin = () => {
-    const {isLogin} = LoginContext();
-    const {setIsLogin} = LoginContext();
-
-    function handleLogout() {
-        console.log({isLogin})
-        setIsLogin(false);
-    }
-
-    const MypageImage = styled.div`
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background-color: #E2fff9;
-      margin: 10px;
-    `;
-    const MypageProfile = styled.ul`
+  const MypageProfile = styled.ul`
       font-size: 1.5rem;
       font-weight: bolder;
-      background-color: white;
       cursor: pointer;
       position: relative;
-      padding: 0 15px 0 0;
+      padding-top: 15px;
     `;
-    const MyDiv = styled.div`
+  const MyDiv = styled.div`
       background-color: white;
       position: absolute;
       top: 30px;
-      right: 1px;
+      right: 40px;
       text-decoration-line: none;
       width: 120px;
       border-radius: 5px;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+      margin-top: 30px;
     `;
-    const DropDown = styled.li`
+  const DropDown = styled.li`
       font-size: 1.3rem;
       text-decoration: none;
       list-style: none;
@@ -161,89 +147,95 @@ const IsLogin = () => {
       color: #9b9b9b;
 
     `;
-    const linkStyle = {
-        textDecoration: 'none',
-        color: 'black'
-    };
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'black'
+  };
 
-    const MyImg = styled.img`
+  const MyImg = styled.img`
       width: 15px;
       margin-right: 20px;
       text-align: left;
 
     `;
-    const LoginButton = styled(Button)`
-      background-color: var(--maincolor);
-      width: 70px;
-      height: 36px;
-      text-align: center;
-      text-decoration: none;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      border-radius: 4px;
-    `;
 
 
-    // isLogin 상태만 가지고 로그인버튼 표시할지 마이페이지 표시할지 정하면 되지 않을까?
-    const [view, setView] = useState(false);
+  // isLogin 상태만 가지고 로그인버튼 표시할지 마이페이지 표시할지 정하면 되지 않을까?
+  const [view, setView] = useState(false);
+  const navigate = useNavigate();
+  const { clearStorage } = useContext(LoginContext);
 
-    return (
-        <>
-            <MypageImage/>
-            <MypageProfile onClick={() => {
-                setView(!view)
-            }}>윤홍비 님{" "}
-                {view && (
-                    <MyDiv>
-                        <DropDown><Link to="/Mypage" style={linkStyle}><MyImg
-                            src={MyPerson}/>마이페이지</Link></DropDown>
-                        <DropDown><Link to="/" style={linkStyle} onClick={handleLogout}><MyImg src={LogOut}/>로그아웃</Link></DropDown>
-                    </MyDiv>
-                )}
-            </MypageProfile>
-        </>
-    )
+  const handleLogout = () => {
+    clearStorage(); // 로그아웃
+    navigate('/signin');
+  };
+
+  return (
+    <>
+      <MypageProfile onClick={() => {
+        setView(!view)
+      }}> < Profile size={'s'} />
+        {view && (
+          <MyDiv>
+            <DropDown><Link style={linkStyle} to="/mypage"><MyImg src={MyPerson} />마이페이지</Link></DropDown>
+            <DropDown><Link to="/" style={linkStyle} onClick={handleLogout}><MyImg src={LogOut} />로그아웃</Link></DropDown>
+          </MyDiv>
+        )}
+      </MypageProfile>
+    </>
+  )
 }
 
 const Header = () => {
-    const {isLogin} = LoginContext();
-    const {setIsLogin} = LoginContext();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { isLogin } = useContext(LoginContext);
 
-    function handleLogout() {
-        console.log({isLogin})
-        setIsLogin(false);
-    }
-
-    return (
-        <Container>
-            <div className='HeaderContainer'>
-                <div className='HeaderLeft'>
-                    <NavLink to="/"><Logo src={logo} alt="로고"/></NavLink>
-                    <div className='Nav'>
-                        <CustomNavLink to="/study" contain="/study" deco={1}>스터디</CustomNavLink>
-                        <CustomNavLink to="/story" contain="story" deco={1}>스토리</CustomNavLink>
-                        <CustomNavLink to="/lounge/free" contain="/lounge" deco={1}>라운지</CustomNavLink>
-                    </div>
-                </div>
-                <div className='HeaderRight'>
-                    <SearchBar>
-                        <input className='searchInput' type="text" placeholder="검색하고 싶은 키워드를 입력해보세요!"/>
-                        <NavLink to='/Lounge/SearchAll'><img src={searchIcon} alt="검색 아이콘"/></NavLink>
-                    </SearchBar>
-                    <div className='LoginArea' style={isLogin ? {width: '135px'} : {width: '130px'}}>
-                        {isLogin ?
-                            <IsLogin></IsLogin>
-                            :
-                            <LoginButton onClick={() => setIsLogin(true)}>로그인</LoginButton>
-                        }
-                    </div>
-                </div>
-            </div>
-        </Container>
-    );
+  return (
+    <Container>
+      <div className="HeaderContainer">
+        <div className="HeaderLeft">
+          <NavLink to="/">
+            <Logo src={logo} alt="로고" />
+          </NavLink>
+          <div className="Nav">
+            <CustomNavLink to="/study" contain="/study" deco={1}>
+              스터디
+            </CustomNavLink>
+            <CustomNavLink to="/story" contain="story" deco={1}>
+              스토리
+            </CustomNavLink>
+            <CustomNavLink to="/lounge/free" contain="/lounge" deco={1}>
+              라운지
+            </CustomNavLink>
+          </div>
+        </div>
+        <div className="HeaderRight">
+          <SearchBar>
+            <input
+              className="searchInput"
+              type="text"
+              placeholder="검색하고 싶은 키워드를 입력해보세요!"
+            />
+            <NavLink to="/Lounge/SearchAll">
+              <img src={searchIcon} alt="검색 아이콘" />
+            </NavLink>
+          </SearchBar>
+          <div
+            className="LoginArea"
+            style={isLogin ? { width: "135px" } : { width: "130px" }}
+          >
+            {isLogin ? (
+              <IsLogin />
+            ) : (
+              <LoginButton onClick={() => navigate("/signin")}>
+                로그인
+              </LoginButton>
+            )}
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
 };
+
 export default Header;

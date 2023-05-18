@@ -1,10 +1,18 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import Header from "../Header";
 import styled from "styled-components";
 import { BigTitle, InputButton } from "../../styles/StyledComponent";
 import { useNavigate } from "react-router-dom";
 import { Editor } from "../Common/Editor";
+
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+// ---------------------------------상우님 수정예정------------------------------------- //
+
+
 
 const StoryWriteContainer = styled.div`
 display: flex;
@@ -52,8 +60,6 @@ const Title = styled.div` /* 1200 140 */
     `;
 
 
-
-
 const StoryWrite = () => {
     const navigate = useNavigate();
 
@@ -77,8 +83,8 @@ const StoryWrite = () => {
                 <form>
                     {/* <InputLabel>제목</InputLabel>
                     <Input type="post_title" placeholder="제목을 입력해주세요." required /> */}
-
-                    <Editor isTitle={1}></Editor>
+                    {/*title 필요에디터*/}
+                    <Editor></Editor>
                     {/* <Input type="post_desc" placeholder="내용을 입력해주세요." required /> */}
 
                     <InputButton type="submit" onClick={onclickPost}>올리기</InputButton>
