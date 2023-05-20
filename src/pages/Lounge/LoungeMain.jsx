@@ -168,6 +168,7 @@ const LoungeMain = () => {
             boardName={boardName}
             isNim={1}
             recommend={post.recommend}
+            img_url={post.imgUrl}
           ></Board>
 
         ))}

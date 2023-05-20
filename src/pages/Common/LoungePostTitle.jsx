@@ -95,7 +95,7 @@ const StyledPostTitle = styled.div`
 `;
 
 export const LoungePostTitle = ({ size, post }) => {
-  const { imgUrl, nickname, title, recommend, regTime } = post;
+  const { userImgUrl, nickname, title, recommend, regTime } = post;
   const sizeStyle = SIZES[size];
 
   return (
@@ -103,7 +103,7 @@ export const LoungePostTitle = ({ size, post }) => {
       <div className="post-title-body">
         <div className="title">{title}</div>
         <div className="info">
-          <img src={imgUrl} alt="#" />
+          <img src={userImgUrl} alt="#" />
           <div className="nickname">{nickname}</div>
         </div>
       </div>

@@ -4,6 +4,9 @@
 // 댓글에서 답글작성 버튼을 누르면 대댓글 작성 폼이 랜더링되게 해야한다. 이떄 parentId값을 전달받아 insert해줘야 한다
 import React, { useState } from "react";
 import styled from "styled-components";
+import {Axios} from "axios";
+import AxiosAPI from "../../api/AxiosAPI";
+import {useNavigate, useParams} from "react-router-dom";
 
 const Container = styled.div`
   padding: 15px;
@@ -53,8 +56,18 @@ const Container = styled.div`
  * @returns {JSX.Element}
  * @constructor
  */
-const CommentWriter = ({ parentId, content, isModify, setIsModify, reply, setReply }) => {
+const CommentWriter = ({
+                         postId,
+                         storyId,
+                         parentId = null,
+                         commentId,
+                         content,
+                         isModify, setIsModify,
+                         reply, setReply,
+                         update, setUpdate}) => {
   const [comment, setComment] = useState(content); // 댓글 입력을 위한 comment
+  const userId = 1;
+
 
   // 댓글 수정 시 이미 등록한 댓글을 나타내기 위함
 
@@ -62,18 +75,57 @@ const CommentWriter = ({ parentId, content, isModify, setIsModify, reply, setRep
     setComment(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const onClickRegComment = async (event) => {
     event.preventDefault();
-    // Handle form submission
-    console.log("Comment submitted:", comment);
-    // Reset the comment field
-    setComment("");
-  };
+    let commentReg;
+    console.log("onClick실행");
+    console.log(postId);
+    console.log(userId);
+    console.log(parentId);
+    try {
+      if (postId) {
+        console.log("post에 댓글 insert");
+        commentReg = await AxiosAPI.postCommentReg(userId, postId, parentId, comment);
+      } else if (storyId) {
+        console.log("story에 댓글 insert");
+        commentReg = await AxiosAPI.storyCommentReg(userId, storyId, parentId, comment);
+      }
+      setComment('');
+      setUpdate(update*-1); // 페이지 재 랜더링
+      setReply(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onClickModComment = async (event) => {
+    event.preventDefault();
+    let commentModify;
+    console.log(commentId);
+    console.log(comment);
+    console.log("postId : " + postId);
+    try {
+      if (postId) {
+        console.log("post에 댓글 수정");
+        commentModify = await AxiosAPI.postCommentModify(commentId, comment);
+      } else if (storyId) {
+        console.log("story에 댓글 수정");
+        commentModify = await AxiosAPI.storyCommentModify(commentId, comment);
+      }
+
+      setUpdate(update+1); // 페이지 재 랜더링
+      console.log(commentModify.data);
+      setIsModify(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <Container parentId={parentId} isModify={isModify}>
       <div className="comment-nickname">닉네임</div>
-      <form className="comment-write-form" onSubmit={handleSubmit}>
+      <form className="comment-write-form">
         <textarea
           value={comment}
           onChange={handleCommentChange}
@@ -87,9 +139,15 @@ const CommentWriter = ({ parentId, content, isModify, setIsModify, reply, setRep
           ) : reply ? (
             <button onClick={() => setReply(false)}>취소</button>
           ) : (
-            <button onClick={() => setComment('')}>취소</button>
+            <button onClick={() => setComment('1')}>취소</button>
           )}
-          <button className="submit-btn" type="submit">등록</button>
+
+          {isModify ?
+              <button className="submit-btn" onClick={onClickModComment}>수정 완료</button>
+              :
+              <button className="submit-btn" onClick={onClickRegComment}>등록</button>
+          }
+
         </div>
 
       </form>
